@@ -10,6 +10,11 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+  build: {
+    rollupOptions: {
+      external: ["figma:asset"]
+    }
+  },
   resolve: {
     alias: {
       // Alias @ to the src directory
