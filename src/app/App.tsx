@@ -232,31 +232,35 @@ export default function App() {
     <div data-theme="wizarding" className="min-h-screen bg-gradient-to-b from-purple-900 via-indigo-900 to-slate-900">
       {/* Navbar */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-indigo-900 to-black backdrop-blur-md border-b border-indigo-500/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 py-2 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center gap-5">
               <img src={CCLogo} alt="Coding Club" className="h-16 pr-5 w-auto border-r-3 border-indigo-500/30" />
-              <h1 className="text-2xl font-bold text-amber-200 " style={{ fontFamily: 'Harry P, serif' }}>
+              <h1 className="text-3xl font-bold text-amber-200 " style={{ fontFamily: 'Harry P, serif' }}>
                 CODIGO 4.0
               </h1>
             </div>
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-6">
-                <a href="#round1" className="text-indigo-200 hover:text-yellow-300 hover:animate-pulse transition-all px-3 py-2 relative group">
+                <a href="#round1" className="text-lg text-amber-100/80 hover:text-amber-300 hover:scale-110 transition-all duration-300 px-4 py-2 relative group drop-shadow-[0_0_5px_rgba(251,191,36,0.3)]" style={{ fontFamily: 'Cinzel, serif' }}>
                   Round 1
-                  <span className="absolute -top-1 -right-1 opacity-0 group-hover:opacity-100 text-yellow-300 text-xs transition-opacity">✨</span>
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-amber-400 group-hover:w-full transition-all duration-300"></span>
+                  <span className="absolute -top-1 -right-1 opacity-0 group-hover:opacity-100 text-yellow-300 text-xs transition-opacity animate-pulse">✨</span>
                 </a>
-                <a href="#round2" className="text-indigo-200 hover:text-yellow-300 hover:animate-pulse transition-all px-3 py-2 relative group">
+                <a href="#round2" className="text-lg text-amber-100/80 hover:text-amber-300 hover:scale-110 transition-all duration-300 px-4 py-2 relative group drop-shadow-[0_0_5px_rgba(251,191,36,0.3)]" style={{ fontFamily: 'Cinzel, serif' }}>
                   Round 2
-                  <span className="absolute -top-1 -right-1 opacity-0 group-hover:opacity-100 text-yellow-300 text-xs transition-opacity">✨</span>
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-amber-400 group-hover:w-full transition-all duration-300"></span>
+                  <span className="absolute -top-1 -right-1 opacity-0 group-hover:opacity-100 text-yellow-300 text-xs transition-opacity animate-pulse">✨</span>
                 </a>
-                <a href="#round3" className="text-indigo-200 hover:text-yellow-300 hover:animate-pulse transition-all px-3 py-2 relative group">
+                <a href="#round3" className="text-lg text-amber-100/80 hover:text-amber-300 hover:scale-110 transition-all duration-300 px-4 py-2 relative group drop-shadow-[0_0_5px_rgba(251,191,36,0.3)]" style={{ fontFamily: 'Cinzel, serif' }}>
                   Round 3
-                  <span className="absolute -top-1 -right-1 opacity-0 group-hover:opacity-100 text-yellow-300 text-xs transition-opacity">✨</span>
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-amber-400 group-hover:w-full transition-all duration-300"></span>
+                  <span className="absolute -top-1 -right-1 opacity-0 group-hover:opacity-100 text-yellow-300 text-xs transition-opacity animate-pulse">✨</span>
                 </a>
-                <a href="#register" className="text-indigo-200 hover:text-yellow-300 hover:animate-pulse transition-all px-3 py-2 relative group">
+                <a href="#register" className="text-lg text-amber-100/80 hover:text-amber-300 hover:scale-110 transition-all duration-300 px-4 py-2 relative group drop-shadow-[0_0_5px_rgba(251,191,36,0.3)]" style={{ fontFamily: 'Cinzel, serif' }}>
                   Register
-                  <span className="absolute -top-1 -right-1 opacity-0 group-hover:opacity-100 text-yellow-300 text-xs transition-opacity">✨</span>
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-amber-400 group-hover:w-full transition-all duration-300"></span>
+                  <span className="absolute -top-1 -right-1 opacity-0 group-hover:opacity-100 text-yellow-300 text-xs transition-opacity animate-pulse">✨</span>
                 </a>
               </div>
             </div>
@@ -270,19 +274,19 @@ export default function App() {
         {/* Mobile Menu */}
         <div className={`md:hidden ${mobileMenuOpen ? 'block' : 'hidden'}`}>
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-gradient-to-r from-indigo-900 to-black">
-            <a href="#round1" onClick={() => setMobileMenuOpen(false)} className="block text-indigo-200 hover:text-yellow-300 hover:animate-pulse transition-all px-3 py-2 relative group">
+            <a href="#round1" onClick={() => setMobileMenuOpen(false)} className="block text-lg text-amber-100/80 hover:text-amber-300 hover:translate-x-2 transition-all duration-300 px-3 py-2 relative group" style={{ fontFamily: 'Cinzel, serif' }}>
               Round 1
               <span className="absolute -top-1 -right-1 opacity-0 group-hover:opacity-100 text-yellow-300 text-xs transition-opacity">✨</span>
             </a>
-            <a href="#round2" onClick={() => setMobileMenuOpen(false)} className="block text-indigo-200 hover:text-yellow-300 hover:animate-pulse transition-all px-3 py-2 relative group">
+            <a href="#round2" onClick={() => setMobileMenuOpen(false)} className="block text-lg text-amber-100/80 hover:text-amber-300 hover:translate-x-2 transition-all duration-300 px-3 py-2 relative group" style={{ fontFamily: 'Cinzel, serif' }}>
               Round 2
               <span className="absolute -top-1 -right-1 opacity-0 group-hover:opacity-100 text-yellow-300 text-xs transition-opacity">✨</span>
             </a>
-            <a href="#round3" onClick={() => setMobileMenuOpen(false)} className="block text-indigo-200 hover:text-yellow-300 hover:animate-pulse transition-all px-3 py-2 relative group">
+            <a href="#round3" onClick={() => setMobileMenuOpen(false)} className="block text-lg text-amber-100/80 hover:text-amber-300 hover:translate-x-2 transition-all duration-300 px-3 py-2 relative group" style={{ fontFamily: 'Cinzel, serif' }}>
               Round 3
               <span className="absolute -top-1 -right-1 opacity-0 group-hover:opacity-100 text-yellow-300 text-xs transition-opacity">✨</span>
             </a>
-            <a href="#register" onClick={() => setMobileMenuOpen(false)} className="block text-indigo-200 hover:text-yellow-300 hover:animate-pulse transition-all px-3 py-2 relative group">
+            <a href="#register" onClick={() => setMobileMenuOpen(false)} className="block text-lg text-amber-100/80 hover:text-amber-300 hover:translate-x-2 transition-all duration-300 px-3 py-2 relative group" style={{ fontFamily: 'Cinzel, serif' }}>
               Register
               <span className="absolute -top-1 -right-1 opacity-0 group-hover:opacity-100 text-yellow-300 text-xs transition-opacity">✨</span>
             </a>
@@ -1024,8 +1028,8 @@ export default function App() {
         <button
           onClick={toggleMusic}
           className={`w-14 h-14 rounded-full flex items-center justify-center border-2 transition-all duration-300 transform hover:scale-110 shadow-[0_0_15px_rgba(251,191,36,0.5)] ${isMusicPlaying
-              ? 'bg-purple-900/80 border-amber-400 text-amber-300'
-              : 'bg-indigo-950/80 border-purple-400 text-purple-400'
+            ? 'bg-purple-900/80 border-amber-400 text-amber-300'
+            : 'bg-indigo-950/80 border-purple-400 text-purple-400'
             }`}
           style={{ backdropFilter: 'blur(4px)' }}
           title={isMusicPlaying ? 'Mute Music' : 'Play Music'}
