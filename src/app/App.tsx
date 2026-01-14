@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import escapeRoomImg from "./images/round001.png";
 import bugBountyImg from "./images/round002.png";
 import CCLogo from "./images/cclogo.png";
+import BgImg from "./images/bg.png";
 import blindCodingImg from "./images/round003.png";
 import qrCodeImg from "./images/qr.jpeg";
 import { supabase } from '@/utils/supabaseClient';
@@ -260,24 +261,14 @@ export default function App() {
       </nav>
 
       {/* Hero Section */}
-      <header id="hero" className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden bg-gradient-to-b from-indigo-950 via-purple-950 to-black">
+      <header id="hero" className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden ">
         {/* Floating stars background */}
         <div className="absolute inset-0">
-          {
-            [...Array(100)].map((_, i) => (
-              <div
-                key={i}
-                className="absolute w-1 h-1 bg-white rounded-full animate-twinkle"
-                style={{
-                  left: `${Math.random() * 100}%`,
-                  top: `${Math.random() * 100}%`,
-                  animationDelay: `${Math.random() * 3}s`,
-                  animationDuration: `${2 + Math.random() * 2}s`,
-                  opacity: Math.random() * 0.7 + 0.3
-                }}
-              />
-            ))
-          }
+          <img
+            src={BgImg}
+            alt="Hero Background"
+            className="w-full h-full object-cover opacity-100 mix-blend-overlay"
+          />
         </div>
 
         <div className="max-w-7xl mx-auto text-center relative z-10 animate-fadeIn">
