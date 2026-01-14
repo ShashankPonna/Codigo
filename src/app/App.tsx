@@ -956,9 +956,9 @@ export default function App() {
                 Contact
               </h5>
               <ul className="space-y-2 text-purple-300 text-sm" style={{ fontFamily: 'Crimson Text, serif' }}>
-                <li>📧 info@codigo.wizard</li>
-                <li>📞 +1 (555) MAGIC-99</li>
-                <li>📍 Platform 9¾, Tech Tower</li>
+                <li>📧 codingclub@jspmrscoe.edu.in</li>
+                <li>📞 +91-7020030540</li>
+                <li>📍 JSPM's RSCOE</li>
               </ul>
             </div>
 
