@@ -154,7 +154,32 @@ export default function App() {
         return;
       }
 
-      toast.success('Registration successful! Welcome to CODIGO 4.0.');
+      // Send confirmation email
+      try {
+        const emailResponse = await fetch('/api/send-confirmation', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name,
+            email,
+            eventName: 'CODIGO 4.0'
+          }),
+        });
+
+        if (!emailResponse.ok) {
+          const errorData = await emailResponse.json();
+          console.error('Failed to send confirmation email:', errorData);
+          toast.warning('Registration successful, but failed to send confirmation email.');
+        } else {
+          toast.success('Registration successful! Check your email for confirmation.');
+        }
+      } catch (emailErr) {
+        console.error('Error sending confirmation email:', emailErr);
+        toast.warning('Registration successful, but failed to send confirmation email.');
+      }
+
       (e.target as HTMLFormElement).reset();
     } catch (error) {
       console.error('Unexpected error:', error);
