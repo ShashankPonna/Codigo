@@ -2,55 +2,55 @@ import type { VercelRequest, VercelResponse } from '@vercel/node';
 import nodemailer from 'nodemailer';
 
 export default async function handler(
-    req: VercelRequest,
-    res: VercelResponse
+  req: VercelRequest,
+  res: VercelResponse
 ) {
-    // CORS configuration
-    res.setHeader('Access-Control-Allow-Credentials', 'true');
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'POST,OPTIONS');
-    res.setHeader(
-        'Access-Control-Allow-Headers',
-        'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
-    );
+  // CORS configuration
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST,OPTIONS');
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+  );
 
-    if (req.method === 'OPTIONS') {
-        res.status(200).end();
-        return;
+  if (req.method === 'OPTIONS') {
+    res.status(200).end();
+    return;
+  }
+
+  if (req.method !== 'POST') {
+    return res.status(405).json({
+      error: 'Method Not Allowed',
+      message: 'Only POST requests are allowed'
+    });
+  }
+
+  const { name, email, teamName, teamId, eventName } = req.body;
+
+  if (!name || !email || !eventName || !teamName || !teamId) {
+    return res.status(400).json({
+      error: 'Missing required fields',
+      message: 'Please provide name, email, teamName, teamId, and eventName'
+    });
+  }
+
+  try {
+    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+      throw new Error('Email configuration missing');
     }
 
-    if (req.method !== 'POST') {
-        return res.status(405).json({
-            error: 'Method Not Allowed',
-            message: 'Only POST requests are allowed'
-        });
-    }
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+      },
+    });
 
-    const { name, email, eventName } = req.body;
-
-    if (!name || !email || !eventName) {
-        return res.status(400).json({
-            error: 'Missing required fields',
-            message: 'Please provide name, email, and eventName'
-        });
-    }
-
-    try {
-        if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
-            throw new Error('Email configuration missing');
-        }
-
-        const transporter = nodemailer.createTransport({
-            service: 'gmail',
-            auth: {
-                user: process.env.EMAIL_USER,
-                pass: process.env.EMAIL_PASS,
-            },
-        });
-
-        // Professional HTML Template
-        // Theme: Clean/Corporate but with Codigo Brand accents (Purple/Gold)
-        const htmlTemplate = `
+    // Professional HTML Template
+    // Theme: Clean/Corporate but with Codigo Brand accents (Purple/Gold)
+    const htmlTemplate = `
 <!DOCTYPE html>
 <html>
 <head>
@@ -196,9 +196,20 @@ export default async function handler(
               We are pleased to confirm your registration. You have successfully secured your spot for the upcoming event.
             </p>
             
+
             <div class="info-box">
               <div class="info-label">Event Name</div>
               <p class="info-value">${eventName}</p>
+              
+              <div style="margin-top: 16px;">
+                <div class="info-label">Team Name</div>
+                <p class="info-value">${teamName}</p>
+              </div>
+
+              <div style="margin-top: 16px;">
+                <div class="info-label">Team ID</div>
+                <p class="info-value" style="color: #4f46e5; letter-spacing: 1px;">${teamId}</p>
+              </div>
             </div>
             
             <p class="text-body">
@@ -227,25 +238,25 @@ export default async function handler(
 </html>
     `;
 
-        const mailOptions = {
-            from: `"Codigo 4.0 Info" <${process.env.EMAIL_USER}>`,
-            to: email,
-            subject: `Registration Confirmed: ${eventName}`,
-            html: htmlTemplate,
-        };
+    const mailOptions = {
+      from: `"Codigo 4.0 Info" <${process.env.EMAIL_USER}>`,
+      to: email,
+      subject: `Registration Confirmed: ${eventName}`,
+      html: htmlTemplate,
+    };
 
-        await transporter.sendMail(mailOptions);
+    await transporter.sendMail(mailOptions);
 
-        return res.status(200).json({
-            success: true,
-            message: 'Confirmation email sent successfully'
-        });
+    return res.status(200).json({
+      success: true,
+      message: 'Confirmation email sent successfully'
+    });
 
-    } catch (error: any) {
-        console.error('Email send error:', error);
-        return res.status(500).json({
-            error: 'Failed to send email',
-            message: error.message || 'Internal Server Error'
-        });
-    }
+  } catch (error: any) {
+    console.error('Email send error:', error);
+    return res.status(500).json({
+      error: 'Failed to send email',
+      message: error.message || 'Internal Server Error'
+    });
+  }
 }

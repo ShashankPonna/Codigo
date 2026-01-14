@@ -82,6 +82,7 @@ export default function App() {
 
     try {
       const formData = new FormData(e.target as HTMLFormElement);
+      const teamName = formData.get('teamName') as string;
       const name = formData.get('name') as string;
       const email = formData.get('email') as string;
       const college = formData.get('college') as string;
@@ -108,6 +109,9 @@ export default function App() {
       // Get file extension
       const fileExt = screenshot.name.split('.').pop()?.toLowerCase() || 'jpg';
       const fileName = `screenshot-${name.replace(/\s+/g, '-')}-${Date.now()}.${fileExt}`;
+
+      // Generate Team ID
+      const teamId = `CODIGO-${Math.random().toString(36).substring(2, 8).toUpperCase()}`;
 
       // Upload to Supabase Storage
       const { data, error } = await supabase
@@ -136,6 +140,8 @@ export default function App() {
         .from('registrations')
         .insert([
           {
+            team_name: teamName,
+            team_id: teamId,
             name,
             email,
             college,
@@ -164,6 +170,8 @@ export default function App() {
           body: JSON.stringify({
             name,
             email,
+            teamName,
+            teamId,
             eventName: 'CODIGO 4.0'
           }),
         });
@@ -763,6 +771,20 @@ export default function App() {
           </div>
 
           <form onSubmit={handleSubmit} className="bg-gradient-to-br from-purple-800/40 via-indigo-800/40 to-purple-900/40 rounded-2xl p-8 border border-purple-500/30 backdrop-blur-sm space-y-6">
+            <div>
+              <label htmlFor="teamName" className="block text-purple-200 mb-2" style={{ fontFamily: 'Crimson Text, serif' }}>
+                Team Name *
+              </label>
+              <input
+                type="text"
+                id="teamName"
+                name="teamName"
+                required
+                className="w-full px-4 py-3 bg-purple-900/50 border border-purple-500/50 rounded-lg text-purple-100 placeholder-purple-400 focus:outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-400/50 transition-all"
+                placeholder="Enter your team name"
+              />
+            </div>
+
             <div>
               <label htmlFor="name" className="block text-purple-200 mb-2" style={{ fontFamily: 'Crimson Text, serif' }}>
                 Team Leader Name *
