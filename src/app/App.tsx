@@ -205,7 +205,7 @@ export default function App() {
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center gap-5">
               <img src={CCLogo} alt="Coding Club" className="h-16 pr-5 w-auto border-r-3 border-indigo-500/30" />
-              <h1 className="text-2xl font-bold text-amber-200 " style={{ fontFamily: 'Cinzel, serif' }}>
+              <h1 className="text-2xl font-bold text-amber-200 " style={{ fontFamily: 'Harry P, serif' }}>
                 CODIGO 4.0
               </h1>
             </div>
@@ -263,23 +263,25 @@ export default function App() {
       <header id="hero" className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden bg-gradient-to-b from-indigo-950 via-purple-950 to-black">
         {/* Floating stars background */}
         <div className="absolute inset-0">
-          {[...Array(100)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-1 h-1 bg-white rounded-full animate-twinkle"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 3}s`,
-                animationDuration: `${2 + Math.random() * 2}s`,
-                opacity: Math.random() * 0.7 + 0.3
-              }}
-            />
-          ))}
+          {
+            [...Array(100)].map((_, i) => (
+              <div
+                key={i}
+                className="absolute w-1 h-1 bg-white rounded-full animate-twinkle"
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                  animationDelay: `${Math.random() * 3}s`,
+                  animationDuration: `${2 + Math.random() * 2}s`,
+                  opacity: Math.random() * 0.7 + 0.3
+                }}
+              />
+            ))
+          }
         </div>
 
         <div className="max-w-7xl mx-auto text-center relative z-10 animate-fadeIn">
-          <h2 className="text-7xl md:text-9xl font-bold mb-8 bg-gradient-to-r from-amber-200 via-yellow-100 to-amber-200 bg-clip-text text-transparent leading-tight animate-float" style={{ fontFamily: 'Cinzel, serif' }}>
+          <h2 className="text-7xl md:text-9xl font-bold mb-8 bg-gradient-to-r from-amber-200 via-yellow-100 to-amber-200 bg-clip-text text-transparent leading-tight animate-float" style={{ fontFamily: 'Harry P, serif' }}>
             CODIGO 4.0
           </h2>
 
@@ -419,10 +421,10 @@ export default function App() {
             </article>
           </div>
         </div>
-      </section>
+      </section >
 
       {/* Round 1 Details - Spell Book */}
-      <section id="round1" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-purple-700 via-indigo-800 to-black">
+      < section id="round1" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-purple-700 via-indigo-800 to-black" >
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left - Magical Illustration */}
@@ -498,10 +500,10 @@ export default function App() {
             </div>
           </div>
         </div>
-      </section>
+      </section >
 
       {/* Round 2 Details - Tournament */}
-      <section id="round2" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-indigo-800 via-blue-900 to-black">
+      < section id="round2" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-indigo-800 via-blue-900 to-black" >
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left - Description */}
@@ -573,10 +575,10 @@ export default function App() {
             </div>
           </div>
         </div>
-      </section>
+      </section >
 
       {/* Round 3 Details - Grand Ritual */}
-      <section id="round3" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-purple-800 via-pink-900 to-black">
+      < section id="round3" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-purple-800 via-pink-900 to-black" >
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left - Magical Illustration */}
@@ -652,10 +654,10 @@ export default function App() {
             </div>
           </div>
         </div>
-      </section>
+      </section >
 
       {/* Round Details Section */}
-      <section id="details" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-transparent via-indigo-950/50 to-transparent">
+      < section id="details" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-transparent via-indigo-950/50 to-transparent" >
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h3 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-amber-300 via-yellow-200 to-amber-300 bg-clip-text text-transparent" style={{ fontFamily: 'Cinzel, serif' }}>
@@ -756,10 +758,10 @@ export default function App() {
             </div>
           </div>
         </div>
-      </section>
+      </section >
 
       {/* Registration Section */}
-      <section id="register" className="py-20 px-4 sm:px-6 lg:px-8">
+      < section id="register" className="py-20 px-4 sm:px-6 lg:px-8" >
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-12">
             <h3 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-amber-300 via-yellow-200 to-amber-300 bg-clip-text text-transparent" style={{ fontFamily: 'Cinzel, serif' }}>
@@ -921,10 +923,10 @@ export default function App() {
             </button>
           </form>
         </div>
-      </section>
+      </section >
 
       {/* Footer */}
-      <footer className="bg-gradient-to-b from-transparent to-black/50 border-t border-purple-500/30 py-12 px-4 sm:px-6 lg:px-8">
+      < footer className="bg-gradient-to-b from-transparent to-black/50 border-t border-purple-500/30 py-12 px-4 sm:px-6 lg:px-8" >
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
             {/* About */}
@@ -996,8 +998,8 @@ export default function App() {
             </p>
           </div>
         </div>
-      </footer>
+      </footer >
       <Toaster />
-    </div>
+    </div >
   );
 }
