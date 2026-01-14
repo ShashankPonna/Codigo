@@ -1,17 +1,47 @@
 import { ImageWithFallback } from '@/app/components/figma/ImageWithFallback';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import escapeRoomImg from "./images/round001.png";
 import bugBountyImg from "./images/round002.png";
 import CCLogo from "./images/cclogo.png";
 import BgImg from "./images/bg.png";
 import blindCodingImg from "./images/round003.png";
 import qrCodeImg from "./images/qr.jpeg";
+import bgMusic from "./music/bg_music.mpeg";
 import { supabase } from '@/utils/supabaseClient';
 import { toast, Toaster } from 'sonner';
 
 export default function App() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isMusicPlaying, setIsMusicPlaying] = useState(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (audio) {
+      audio.volume = 0.4;
+      const playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          setIsMusicPlaying(true);
+        }).catch(() => {
+          setIsMusicPlaying(false);
+        });
+      }
+    }
+  }, []);
+
+  const toggleMusic = () => {
+    const audio = audioRef.current;
+    if (audio) {
+      if (isMusicPlaying) {
+        audio.pause();
+      } else {
+        audio.play();
+      }
+      setIsMusicPlaying(!isMusicPlaying);
+    }
+  };
 
   useEffect(() => {
     // Create floating particles
@@ -990,6 +1020,29 @@ export default function App() {
           </div>
         </div>
       </footer >
+      <div className="fixed bottom-6 right-6 z-50">
+        <button
+          onClick={toggleMusic}
+          className={`w-14 h-14 rounded-full flex items-center justify-center border-2 transition-all duration-300 transform hover:scale-110 shadow-[0_0_15px_rgba(251,191,36,0.5)] ${isMusicPlaying
+              ? 'bg-purple-900/80 border-amber-400 text-amber-300'
+              : 'bg-indigo-950/80 border-purple-400 text-purple-400'
+            }`}
+          style={{ backdropFilter: 'blur(4px)' }}
+          title={isMusicPlaying ? 'Mute Music' : 'Play Music'}
+        >
+          {isMusicPlaying ? (
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+            </svg>
+          ) : (
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
+            </svg>
+          )}
+        </button>
+      </div>
+      <audio ref={audioRef} src={bgMusic} loop />
       <Toaster />
     </div >
   );
