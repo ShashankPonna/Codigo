@@ -2,6 +2,7 @@ import { ImageWithFallback } from '@/app/components/figma/ImageWithFallback';
 import { useEffect, useState } from 'react';
 import escapeRoomImg from "./images/round001.png";
 import bugBountyImg from "./images/round002.png";
+import CCLogo from "./images/cclogo.png";
 import blindCodingImg from "./images/round003.png";
 import qrCodeImg from "./images/qr.jpeg";
 import { supabase } from '@/utils/supabaseClient';
@@ -43,9 +44,9 @@ export default function App() {
 
     // Smooth scroll behavior
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
+      anchor.addEventListener('click', (e) => {
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href') || '');
+        const target = document.querySelector(anchor.getAttribute('href') || '');
         if (target) {
           target.scrollIntoView({ behavior: 'smooth' });
         }
@@ -169,8 +170,9 @@ export default function App() {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-indigo-900 to-black backdrop-blur-md border-b border-indigo-500/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            <div className="flex items-center">
-              <h1 className="text-2xl font-bold text-amber-200" style={{ fontFamily: 'Cinzel, serif' }}>
+            <div className="flex items-center gap-5">
+              <img src={CCLogo} alt="Coding Club" className="h-16 pr-5 w-auto border-r-3 border-indigo-500/30" />
+              <h1 className="text-2xl font-bold text-amber-200 " style={{ fontFamily: 'Cinzel, serif' }}>
                 CODIGO 4.0
               </h1>
             </div>
@@ -533,7 +535,7 @@ export default function App() {
               <ImageWithFallback
                 src={bugBountyImg}
                 alt="Magic Tournament"
-                className="rounded-3xl shadow-2xl border-4 border-amber-400/30 hover:border-amber-300 transition-all duration-500 hover:scale-105 hover:shadow-amber-500/40 w-full h-auto max-h-[100vh] object-contain"
+                className="rounded-3xl shadow-2xl border-4 border-amber-400/30 hover:border-amber-300 transition-all duration-500 hover:scale-105 hover:shadow-amber-500/40 max-h-[100vh] object-contain"
               />
             </div>
           </div>
@@ -549,7 +551,7 @@ export default function App() {
               <ImageWithFallback
                 src={blindCodingImg}
                 alt="Potion Brewing"
-                className="rounded-3xl shadow-2xl border-4 border-amber-400/30 hover:border-amber-300 transition-all duration-500 hover:scale-105 hover:shadow-amber-500/40 w-full h-auto max-h-[100vh] object-contain"
+                className="rounded-3xl shadow-2xl border-4 border-amber-400/30 hover:border-amber-300 transition-all duration-500 hover:scale-105 hover:shadow-amber-500/40 max-h-[100vh] object-contain"
               />
             </div>
 
