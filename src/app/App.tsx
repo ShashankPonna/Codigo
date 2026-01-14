@@ -1,9 +1,9 @@
 import { ImageWithFallback } from '@/app/components/figma/ImageWithFallback';
 import { useEffect, useState } from 'react';
-import escapeRoomImg from 'figma:asset/e3ffa7d1f804ca323a4967a4bd3630d14c44b0cb.png';
-import bugBountyImg from 'figma:asset/769ed4f8bdea5bff959ec08a5ef510cce7c13f23.png';
-import blindCodingImg from 'figma:asset/89e87056e044605e1ba65b6d052a9f05950ca52f.png';
-import qrCodeImg from 'figma:asset/eab32427696b15da123304e86c248bedac76bc1e.png';
+import escapeRoomImg from "./images/round001.png";
+import bugBountyImg from "./images/round002.png";
+import blindCodingImg from "./images/round003.png";
+import qrCodeImg from "./images/qr.jpeg";
 import { supabase } from '@/utils/supabaseClient';
 import { toast, Toaster } from 'sonner';
 
@@ -21,20 +21,20 @@ export default function App() {
       for (let i = 0; i < particleCount; i++) {
         const particle = document.createElement('div');
         particle.className = 'floating-particle';
-        
+
         // Random positions
         const startX = Math.random() * 100;
         const startY = Math.random() * 100;
         const endX = (Math.random() - 0.5) * 200;
         const endY = (Math.random() - 0.5) * 200;
-        
+
         particle.style.left = `${startX}%`;
         particle.style.top = `${startY}%`;
         particle.style.setProperty('--tx', `${endX}px`);
         particle.style.setProperty('--ty', `${endY}px`);
         particle.style.animationDelay = `${Math.random() * 8}s`;
         particle.style.animationDuration = `${8 + Math.random() * 4}s`;
-        
+
         hero.appendChild(particle);
       }
     };
@@ -242,25 +242,25 @@ export default function App() {
             />
           ))}
         </div>
-        
+
         <div className="max-w-7xl mx-auto text-center relative z-10 animate-fadeIn">
           <h2 className="text-7xl md:text-9xl font-bold mb-8 bg-gradient-to-r from-amber-200 via-yellow-100 to-amber-200 bg-clip-text text-transparent leading-tight animate-float" style={{ fontFamily: 'Cinzel, serif' }}>
             CODIGO 4.0
           </h2>
-          
+
           <p className="text-2xl md:text-3xl text-purple-200 mb-4 tracking-wide" style={{ fontFamily: 'Crimson Text, serif' }}>
             Organized by Coding Club RSCOE
           </p>
-          
+
           <p className="text-xl md:text-2xl text-purple-300 mb-16 font-light" style={{ fontFamily: 'Crimson Text, serif', fontStyle: 'italic' }}>
             Team-based coding competition • 2-3 members per team
           </p>
-          
+
           <div className="flex justify-center animate-bounceOnce">
-            <a 
-              href="#register" 
+            <a
+              href="#register"
               className="group relative px-12 py-5 bg-gradient-to-r from-amber-500 to-yellow-500 text-purple-900 rounded-xl font-bold text-xl transition-all duration-300 hover:from-amber-400 hover:to-yellow-400 transform hover:scale-110"
-              style={{ 
+              style={{
                 fontFamily: 'Cinzel, serif',
                 boxShadow: '0 0 20px rgb(255, 215, 0, 0.5), 0 0 40px rgb(255, 215, 0, 0.3)'
               }}
@@ -294,24 +294,24 @@ export default function App() {
             <article className="scroll-reveal group relative bg-gradient-to-br from-purple-700 via-indigo-800 to-purple-900 rounded-3xl p-8 border-2 border-purple-400/40 hover:border-amber-300 transition-all duration-500 hover:transform hover:scale-110 backdrop-blur-lg overflow-hidden shadow-2xl hover:shadow-amber-500/30">
               {/* Magical glow effect */}
               <div className="absolute inset-0 bg-gradient-to-br from-amber-400/0 via-amber-400/0 to-amber-400/0 group-hover:from-amber-400/20 group-hover:via-transparent group-hover:to-amber-400/10 transition-all duration-500"></div>
-              
+
               {/* Sparkle effects on hover */}
               <div className="absolute top-4 right-4 text-2xl opacity-0 group-hover:opacity-100 group-hover:animate-sparkle transition-opacity duration-300">✨</div>
               <div className="absolute bottom-4 left-4 text-2xl opacity-0 group-hover:opacity-100 group-hover:animate-sparkle transition-opacity duration-300" style={{ animationDelay: '0.3s' }}>✨</div>
-              
+
               <div className="relative z-10">
                 <div className="w-20 h-20 bg-gradient-to-br from-purple-400 to-indigo-500 rounded-2xl flex items-center justify-center mb-6 shadow-xl group-hover:shadow-amber-400/50 transition-shadow duration-300 group-hover:rotate-12 transform">
                   <span className="text-4xl">🔐</span>
                 </div>
-                
+
                 <h4 className="text-3xl font-bold text-amber-200 mb-4 group-hover:text-amber-100 transition-colors" style={{ fontFamily: 'Cinzel, serif' }}>
                   Round 1: Escape Room
                 </h4>
-                
+
                 <p className="text-purple-100 mb-6 leading-relaxed text-lg" style={{ fontFamily: 'Crimson Text, serif' }}>
                   Solve a series of linked challenges to unlock the final QR and qualify for the next round.
                 </p>
-                
+
                 <div className="flex items-center text-sm text-purple-200 bg-purple-900/40 px-4 py-2 rounded-lg">
                   <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
@@ -325,24 +325,24 @@ export default function App() {
             <article className="scroll-reveal group relative bg-gradient-to-br from-indigo-700 via-blue-800 to-purple-900 rounded-3xl p-8 border-2 border-indigo-400/40 hover:border-amber-300 transition-all duration-500 hover:transform hover:scale-110 backdrop-blur-lg overflow-hidden shadow-2xl hover:shadow-amber-500/30" style={{ animationDelay: '0.2s' }}>
               {/* Magical glow effect */}
               <div className="absolute inset-0 bg-gradient-to-br from-amber-400/0 via-amber-400/0 to-amber-400/0 group-hover:from-amber-400/20 group-hover:via-transparent group-hover:to-amber-400/10 transition-all duration-500"></div>
-              
+
               {/* Sparkle effects on hover */}
               <div className="absolute top-4 right-4 text-2xl opacity-0 group-hover:opacity-100 group-hover:animate-sparkle transition-opacity duration-300">✨</div>
               <div className="absolute bottom-4 left-4 text-2xl opacity-0 group-hover:opacity-100 group-hover:animate-sparkle transition-opacity duration-300" style={{ animationDelay: '0.3s' }}>✨</div>
-              
+
               <div className="relative z-10">
                 <div className="w-20 h-20 bg-gradient-to-br from-indigo-400 to-blue-500 rounded-2xl flex items-center justify-center mb-6 shadow-xl group-hover:shadow-amber-400/50 transition-shadow duration-300 group-hover:rotate-12 transform">
                   <span className="text-4xl">🐛</span>
                 </div>
-                
+
                 <h4 className="text-3xl font-bold text-amber-200 mb-4 group-hover:text-amber-100 transition-colors" style={{ fontFamily: 'Cinzel, serif' }}>
                   Round 2: Bug Bounty
                 </h4>
-                
+
                 <p className="text-purple-100 mb-6 leading-relaxed text-lg" style={{ fontFamily: 'Crimson Text, serif' }}>
                   Identify and fix logical and syntax errors in a given program to produce the correct output.
                 </p>
-                
+
                 <div className="flex items-center text-sm text-purple-200 bg-indigo-900/40 px-4 py-2 rounded-lg">
                   <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
@@ -356,24 +356,24 @@ export default function App() {
             <article className="scroll-reveal group relative bg-gradient-to-br from-purple-800 via-pink-800 to-purple-900 rounded-3xl p-8 border-2 border-pink-400/40 hover:border-amber-300 transition-all duration-500 hover:transform hover:scale-110 backdrop-blur-lg overflow-hidden shadow-2xl hover:shadow-amber-500/30" style={{ animationDelay: '0.4s' }}>
               {/* Magical glow effect */}
               <div className="absolute inset-0 bg-gradient-to-br from-amber-400/0 via-amber-400/0 to-amber-400/0 group-hover:from-amber-400/20 group-hover:via-transparent group-hover:to-amber-400/10 transition-all duration-500"></div>
-              
+
               {/* Sparkle effects on hover */}
               <div className="absolute top-4 right-4 text-2xl opacity-0 group-hover:opacity-100 group-hover:animate-sparkle transition-opacity duration-300">✨</div>
               <div className="absolute bottom-4 left-4 text-2xl opacity-0 group-hover:opacity-100 group-hover:animate-sparkle transition-opacity duration-300" style={{ animationDelay: '0.3s' }}>✨</div>
-              
+
               <div className="relative z-10">
                 <div className="w-20 h-20 bg-gradient-to-br from-pink-400 to-purple-500 rounded-2xl flex items-center justify-center mb-6 shadow-xl group-hover:shadow-amber-400/50 transition-shadow duration-300 group-hover:rotate-12 transform">
                   <span className="text-4xl">👁️‍🗨️</span>
                 </div>
-                
+
                 <h4 className="text-3xl font-bold text-amber-200 mb-4 group-hover:text-amber-100 transition-colors" style={{ fontFamily: 'Cinzel, serif' }}>
                   Round 3: Blind Coding
                 </h4>
-                
+
                 <p className="text-purple-100 mb-6 leading-relaxed text-lg" style={{ fontFamily: 'Crimson Text, serif' }}>
                   Write correct code without execution under strict time blocks.
                 </p>
-                
+
                 <div className="flex items-center text-sm text-purple-200 bg-pink-900/40 px-4 py-2 rounded-lg">
                   <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
@@ -392,13 +392,13 @@ export default function App() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left - Magical Illustration */}
             <div className="scroll-reveal order-2 lg:order-1">
-              <ImageWithFallback 
+              <ImageWithFallback
                 src={escapeRoomImg}
                 alt="Magic Spell Book"
                 className="rounded-3xl shadow-2xl border-4 border-amber-400/30 hover:border-amber-300 transition-all duration-500 hover:scale-105 hover:shadow-amber-500/40 w-full h-auto max-h-[100vh] object-contain"
               />
             </div>
-            
+
             {/* Right - Description */}
             <div className="scroll-reveal order-1 lg:order-2" style={{ animationDelay: '0.2s' }}>
               <div className="inline-block px-4 py-2 rounded-full bg-purple-600/50 border border-purple-400/50 text-purple-200 text-sm mb-4">
@@ -410,7 +410,7 @@ export default function App() {
               <p className="text-purple-100 text-xl mb-8 leading-relaxed" style={{ fontFamily: 'Crimson Text, serif' }}>
                 A 45-minute escape room–based challenge with four linked tasks that must be solved sequentially. Teams must unlock the final QR page within limited attempts to qualify for the next round.
               </p>
-              
+
               <div className="space-y-6">
                 <div className="bg-purple-900/30 border border-purple-500/30 rounded-xl p-6 backdrop-blur-sm">
                   <h4 className="text-xl font-bold text-amber-300 mb-3 flex items-center" style={{ fontFamily: 'Cinzel, serif' }}>
@@ -448,7 +448,7 @@ export default function App() {
                     </li>
                   </ul>
                 </div>
-                
+
                 <div className="grid grid-cols-2 gap-4">
                   <div className="bg-indigo-900/30 border border-indigo-500/30 rounded-xl p-4 backdrop-blur-sm">
                     <div className="text-amber-300 font-bold mb-1" style={{ fontFamily: 'Cinzel, serif' }}>Duration</div>
@@ -480,7 +480,7 @@ export default function App() {
               <p className="text-purple-100 text-xl mb-8 leading-relaxed" style={{ fontFamily: 'Crimson Text, serif' }}>
                 Participants are given a working program containing logical and syntax errors. The task is to analyze the code, identify bugs, and fix them to produce the correct output without changing the program's core structure.
               </p>
-              
+
               <div className="space-y-6">
                 <div className="bg-indigo-900/30 border border-indigo-500/30 rounded-xl p-6 backdrop-blur-sm">
                   <h4 className="text-xl font-bold text-amber-300 mb-3 flex items-center" style={{ fontFamily: 'Cinzel, serif' }}>
@@ -514,7 +514,7 @@ export default function App() {
                     </li>
                   </ul>
                 </div>
-                
+
                 <div className="grid grid-cols-2 gap-4">
                   <div className="bg-blue-900/30 border border-blue-500/30 rounded-xl p-4 backdrop-blur-sm">
                     <div className="text-amber-300 font-bold mb-1" style={{ fontFamily: 'Cinzel, serif' }}>Duration</div>
@@ -527,10 +527,10 @@ export default function App() {
                 </div>
               </div>
             </div>
-            
+
             {/* Right - Magical Illustration */}
             <div className="scroll-reveal" style={{ animationDelay: '0.2s' }}>
-              <ImageWithFallback 
+              <ImageWithFallback
                 src={bugBountyImg}
                 alt="Magic Tournament"
                 className="rounded-3xl shadow-2xl border-4 border-amber-400/30 hover:border-amber-300 transition-all duration-500 hover:scale-105 hover:shadow-amber-500/40 w-full h-auto max-h-[100vh] object-contain"
@@ -546,13 +546,13 @@ export default function App() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left - Magical Illustration */}
             <div className="scroll-reveal order-2 lg:order-1">
-              <ImageWithFallback 
+              <ImageWithFallback
                 src={blindCodingImg}
                 alt="Potion Brewing"
                 className="rounded-3xl shadow-2xl border-4 border-amber-400/30 hover:border-amber-300 transition-all duration-500 hover:scale-105 hover:shadow-amber-500/40 w-full h-auto max-h-[100vh] object-contain"
               />
             </div>
-            
+
             {/* Right - Description */}
             <div className="scroll-reveal order-1 lg:order-2" style={{ animationDelay: '0.2s' }}>
               <div className="inline-block px-4 py-2 rounded-full bg-pink-600/50 border border-pink-400/50 text-pink-200 text-sm mb-4">
@@ -564,7 +564,7 @@ export default function App() {
               <p className="text-purple-100 text-xl mb-8 leading-relaxed" style={{ fontFamily: 'Crimson Text, serif' }}>
                 A blind coding challenge consisting of three coding problems with increasing difficulty. Code must be written without execution, compilation, or output verification, testing accuracy and logic under strict time limits.
               </p>
-              
+
               <div className="space-y-6">
                 <div className="bg-purple-900/30 border border-purple-500/30 rounded-xl p-6 backdrop-blur-sm">
                   <h4 className="text-xl font-bold text-amber-300 mb-3 flex items-center" style={{ fontFamily: 'Cinzel, serif' }}>
@@ -602,7 +602,7 @@ export default function App() {
                     </li>
                   </ul>
                 </div>
-                
+
                 <div className="grid grid-cols-2 gap-4">
                   <div className="bg-pink-900/30 border border-pink-500/30 rounded-xl p-4 backdrop-blur-sm">
                     <div className="text-amber-300 font-bold mb-1" style={{ fontFamily: 'Cinzel, serif' }}>Duration</div>
@@ -638,7 +638,7 @@ export default function App() {
                 <span className="text-3xl mr-3">📜</span>
                 Event Details
               </h4>
-              
+
               <dl className="space-y-4" style={{ fontFamily: 'Crimson Text, serif' }}>
                 <div className="flex border-b border-purple-500/20 pb-3">
                   <dt className="text-purple-300 w-32">Date:</dt>
@@ -669,7 +669,7 @@ export default function App() {
                 <span className="text-3xl mr-3">⚡</span>
                 Rules & Requirements
               </h4>
-              
+
               <ul className="space-y-4 text-purple-100" style={{ fontFamily: 'Crimson Text, serif' }}>
                 <li className="flex items-start">
                   <span className="text-amber-400 mr-3 mt-1">✦</span>
@@ -701,7 +701,7 @@ export default function App() {
               <span className="text-4xl mr-3">🏅</span>
               Rewards & Glory
             </h4>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="text-center p-6 bg-gradient-to-br from-yellow-500/20 to-amber-600/20 rounded-xl border border-amber-400/40">
                 <div className="text-5xl mb-3">🥇</div>
@@ -763,7 +763,7 @@ export default function App() {
                 placeholder="wizard@example.com"
               />
             </div>
-             <div>
+            <div>
               <label htmlFor="member2Name" className="block text-purple-200 mb-2" style={{ fontFamily: 'Crimson Text, serif' }}>
                 Member 2 Name *
               </label>
@@ -822,7 +822,7 @@ export default function App() {
               <h3 className="text-xl font-bold text-amber-200 mb-4" style={{ fontFamily: 'Cinzel, serif' }}>
                 Scan to Pay
               </h3>
-              <ImageWithFallback 
+              <ImageWithFallback
                 src={qrCodeImg}
                 alt="UPI Payment QR Code"
                 className="w-64 h-64 rounded-lg shadow-xl border-4 border-amber-400/30 hover:border-amber-300 transition-all duration-300"
