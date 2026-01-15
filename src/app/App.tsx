@@ -360,7 +360,7 @@ export default function App() {
             Team-based coding competition • 2-3 members per team
           </p>
 
-          <div className="flex justify-center animate-bounceOnce">
+          <div className="flex flex-col items-center gap-6 animate-bounceOnce">
             <a
               href="#register"
               className="group relative px-12 py-5 bg-primary text-primary-foreground rounded-xl font-bold text-xl transition-all duration-300 hover:bg-primary/90 transform hover:scale-110"
@@ -376,6 +376,14 @@ export default function App() {
               }}
             >
               ⚡ Register Now ⚡
+            </a>
+
+            <a
+              href="https://drive.google.com/file/d/1upJ4EwhMqJQ9ORmsiK2DNEEbrvYQwlpF/view?usp=drivesdk"
+              className="px-8 py-3 border-2 border-primary text-primary rounded-lg font-semibold text-lg transition-all duration-300 hover:bg-primary/10 hover:shadow-lg hover:shadow-primary/20 backdrop-blur-sm"
+              style={{ fontFamily: 'Cinzel, serif' }}
+            >
+              📜 View Rulebook
             </a>
           </div>
         </div>
