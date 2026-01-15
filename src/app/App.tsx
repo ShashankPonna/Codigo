@@ -158,8 +158,7 @@ export default function App() {
       const fileExt = screenshot.name.split('.').pop()?.toLowerCase() || 'jpg';
       const fileName = `screenshot-${name.replace(/\s+/g, '-')}-${Date.now()}.${fileExt}`;
 
-      // Generate Team ID
-      const teamId = `CODIGO-${Math.random().toString(36).substring(2, 8).toUpperCase()}`;
+
 
       // Upload to Supabase Storage
       const { data, error } = await supabase
@@ -192,7 +191,7 @@ export default function App() {
         },
         body: JSON.stringify({
           teamName,
-          teamId,
+
           name,
           email,
           college,
@@ -229,6 +228,10 @@ export default function App() {
         return;
       }
 
+      // Parse success response to get generated Team ID
+      const registerResult = await registerResponse.json();
+      const generatedTeamId = registerResult.data?.[0]?.team_id || 'PENDING';
+
       // Send confirmation email
       try {
         const emailResponse = await fetch('/api/send-confirmation', {
@@ -240,7 +243,7 @@ export default function App() {
             name,
             email,
             teamName,
-            teamId,
+            teamId: generatedTeamId,
             eventName: 'CODIGO 4.0'
           }),
         });

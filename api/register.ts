@@ -80,13 +80,28 @@ export default async function handler(
             });
         }
 
+        // Generate Sequential Team ID
+        // Count total registrations
+        const { count, error: countError } = await adminSupabase
+            .from('registrations')
+            .select('*', { count: 'exact', head: true });
+
+        if (countError) {
+            console.error('Count error:', countError);
+            return res.status(500).json({ error: 'Failed to generate Team ID' });
+        }
+
+        const nextNum = (count || 0) + 1;
+        // Format: CODIGO-001, CODIGO-002, etc.
+        const newTeamId = `CODIGO-${String(nextNum).padStart(3, '0')}`;
+
         // Insert Record
         const { data, error: insertError } = await adminSupabase
             .from('registrations')
             .insert([
                 {
                     team_name: teamName,
-                    team_id: teamId,
+                    team_id: newTeamId, // Use generated ID
                     name,
                     email,
                     college,
