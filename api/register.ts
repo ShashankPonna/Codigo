@@ -81,7 +81,7 @@ export default async function handler(
         }
 
         // Insert Record
-        const { data, error: insertError } = await supabase
+        const { data, error: insertError } = await adminSupabase
             .from('registrations')
             .insert([
                 {
@@ -108,6 +108,10 @@ export default async function handler(
 
     } catch (error: any) {
         console.error('Unexpected error:', error);
-        return res.status(500).json({ error: 'Internal Server Error' });
+        return res.status(500).json({
+            error: 'Internal Server Error',
+            message: error.message || 'Unknown error occurred',
+            details: String(error)
+        });
     }
 }
