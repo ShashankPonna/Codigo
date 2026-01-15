@@ -184,26 +184,47 @@ export default function App() {
       }
 
       // Insert registration data
-      const { error: registrationError } = await supabase
-        .from('registrations')
-        .insert([
-          {
-            team_name: teamName,
-            team_id: teamId,
-            name,
-            email,
-            college,
-            phone,
-            member2_name: member2Name,
-            member3_name: member3Name || null,
-            upi_id: upiId,
-            screenshot_url: data.path
-          }
-        ]);
+      // Register via API (Rate Limited)
+      const registerResponse = await fetch('/api/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          teamName,
+          teamId,
+          name,
+          email,
+          college,
+          phone,
+          member2Name,
+          member3Name,
+          upiId,
+          screenshot_url: data.path
+        }),
+      });
 
-      if (registrationError) {
-        console.error('Registration error:', registrationError);
-        toast.error(`Failed to register: ${registrationError.message}`);
+      if (!registerResponse.ok) {
+        let errorData;
+        const responseText = await registerResponse.text();
+        try {
+          errorData = JSON.parse(responseText);
+        } catch (e) {
+          console.error('API Response was not JSON (likely HTML 404/500):', responseText);
+          toast.error(`Server Error: ${registerResponse.status} (Check Console)`);
+          setIsSubmitting(false);
+          return;
+        }
+
+        // Handle Rate Limit specifically
+        if (registerResponse.status === 429) {
+          toast.error(errorData.message || 'Rate limit exceeded. Try again later.');
+          setIsSubmitting(false);
+          return;
+        }
+
+        console.error('Registration error:', errorData);
+        toast.error(`Failed to register: ${errorData.error || 'Unknown error'}`);
         setIsSubmitting(false);
         return;
       }
