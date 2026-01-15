@@ -215,6 +215,10 @@ export default async function handler(
             <p class="text-body">
               Please make sure to arrive at the venue 15 minutes prior to the scheduled time. Bring your college ID and any required equipment mentioned in the event guidelines.
             </p>
+
+            <div style="text-align: center; margin: 30px 0;">
+              <a href="https://chat.whatsapp.com/CqZG7fem23a9wp1phw3RAA" style="background-color: #25D366; color: white; padding: 12px 24px; text-decoration: none; border-radius: 5px; font-weight: bold; display: inline-block;">Join WhatsApp Group</a>
+            </div>
             
             <p class="text-body" style="margin-top: 32px;">
               Best regards,<br>
