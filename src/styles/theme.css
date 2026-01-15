@@ -2,80 +2,133 @@
 
 :root {
   --font-size: 16px;
-  --background: #ffffff;
-  --foreground: oklch(0.145 0 0);
-  --card: #ffffff;
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: #030213;
-  --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.95 0.0058 264.53);
-  --secondary-foreground: #030213;
-  --muted: #ececf0;
-  --muted-foreground: #717182;
-  --accent: #e9ebef;
-  --accent-foreground: #030213;
-  --destructive: #d4183d;
+
+  /* ========================================================================
+     LIGHT MODE (Previous "Classic" Palette - Indigo/Purple/Amber)
+     Technically a dark theme, but reduced contrast compared to the new one.
+     ======================================================================== */
+
+  /* Background: Indigo-900/Purple equivalent */
+  --background: #1e1b4b;
+  /* Text: Purple-100 */
+  --foreground: #f3e8ff;
+
+  /* Card: Indigo-950/Glassy styling */
+  --card: #312e81;
+  --card-foreground: #f3e8ff;
+
+  /* Popover: Same as card */
+  --popover: #312e81;
+  --popover-foreground: #f3e8ff;
+
+  /* Primary: Amber-400 (The "Electric" Gold) */
+  --primary: #fbbf24;
+  --primary-foreground: #1e1b4b;
+
+  /* Secondary: Indigo-800 */
+  --secondary: #3730a3;
+  --secondary-foreground: #e0e7ff;
+
+  /* Muted: Indigo-900/50 */
+  --muted: #312e81;
+  --muted-foreground: #a5b4fc;
+
+  /* Accent: Amber-400 */
+  --accent: #fbbf24;
+  --accent-foreground: #1e1b4b;
+
+  /* Destructive */
+  --destructive: #ef4444;
   --destructive-foreground: #ffffff;
-  --border: rgba(0, 0, 0, 0.1);
-  --input: transparent;
-  --input-background: #f3f3f5;
-  --switch-background: #cbced4;
-  --font-weight-medium: 500;
-  --font-weight-normal: 400;
-  --ring: oklch(0.708 0 0);
+
+  /* Border: Amber-400 with opacity */
+  --border: rgba(251, 191, 36, 0.3);
+
+  /* Input */
+  --input: #2e1065;
+  --input-background: #2e1065;
+
+  /* Ring */
+  --ring: #fbbf24;
+
+  --radius: 0.625rem;
+
+  /* Chart Colors (Retained) */
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: #030213;
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+
+  /* Sidebar */
+  --sidebar: #1e1b4b;
+  --sidebar-foreground: #f3e8ff;
+  --sidebar-primary: #fbbf24;
+  --sidebar-primary-foreground: #1e1b4b;
+  --sidebar-accent: #fbbf24;
+  --sidebar-accent-foreground: #1e1b4b;
+  --sidebar-border: rgba(251, 191, 36, 0.2);
+  --sidebar-ring: #fbbf24;
+
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.145 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.145 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.985 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.396 0.141 25.723);
-  --destructive-foreground: oklch(0.637 0.237 25.331);
-  --border: oklch(0.269 0 0);
-  --input: oklch(0.269 0 0);
-  --ring: oklch(0.439 0 0);
-  --font-weight-medium: 500;
-  --font-weight-normal: 400;
+  /* ========================================================================
+     DARK MODE (New "Magical" Palette - Deep Midnight/Gold)
+     ======================================================================== */
+
+  /* Primary (Background): #0E0B16 */
+  --background: #0E0B16;
+  /* Text Primary: #F5F3E7 */
+  --foreground: #F5F3E7;
+
+  /* Secondary (Cards / Sections): #1C1A2E */
+  --card: #1C1A2E;
+  --card-foreground: #F5F3E7;
+
+  --popover: #1C1A2E;
+  --popover-foreground: #F5F3E7;
+
+  /* Accent (Magic / Buttons / Hover): #D4AF37 */
+  --primary: #D4AF37;
+  --primary-foreground: #0E0B16;
+
+  /* Secondary Background */
+  --secondary: #1C1A2E;
+  --secondary-foreground: #B8B6C8;
+
+  /* Muted / Text Secondary */
+  --muted: #1C1A2E;
+  --muted-foreground: #B8B6C8;
+
+  /* Accent */
+  --accent: #D4AF37;
+  --accent-foreground: #0E0B16;
+
+  --destructive: #d4183d;
+  --destructive-foreground: #ffffff;
+
+  --border: rgba(212, 175, 55, 0.2);
+  --input: #1C1A2E;
+
+  --ring: #D4AF37;
+
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
   --chart-4: oklch(0.627 0.265 303.9);
   --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(0.269 0 0);
-  --sidebar-ring: oklch(0.439 0 0);
+
+  --sidebar: #1C1A2E;
+  --sidebar-foreground: #F5F3E7;
+  --sidebar-primary: #D4AF37;
+  --sidebar-primary-foreground: #0E0B16;
+  --sidebar-accent: #D4AF37;
+  --sidebar-accent-foreground: #0E0B16;
+  --sidebar-border: rgba(212, 175, 55, 0.1);
+  --sidebar-ring: #D4AF37;
 }
 
 @theme inline {
@@ -182,19 +235,25 @@
 
 /* Custom animations for CODIGO wizarding theme */
 @keyframes float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0px);
   }
+
   50% {
     transform: translateY(-20px);
   }
 }
 
 @keyframes sparkle {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 0;
     transform: scale(0);
   }
+
   50% {
     opacity: 1;
     transform: scale(1);
@@ -206,6 +265,7 @@
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -213,18 +273,24 @@
 }
 
 @keyframes bounceOnce {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-10px);
   }
 }
 
 @keyframes twinkle {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 0.3;
   }
+
   50% {
     opacity: 1;
   }
@@ -235,12 +301,15 @@
     transform: translate(0, 0) scale(1);
     opacity: 0;
   }
+
   10% {
     opacity: 1;
   }
+
   90% {
     opacity: 1;
   }
+
   100% {
     transform: translate(var(--tx), var(--ty)) scale(0);
     opacity: 0;
@@ -271,7 +340,7 @@
   position: absolute;
   width: 3px;
   height: 3px;
-  background: radial-gradient(circle, rgba(255, 215, 0, 1) 0%, rgba(255, 215, 0, 0) 70%);
+  background: radial-gradient(circle, rgba(212, 175, 55, 1) 0%, rgba(212, 175, 55, 0) 70%);
   border-radius: 50%;
   pointer-events: none;
   animation: floatParticle 8s ease-in-out infinite;
@@ -282,6 +351,7 @@
     opacity: 0;
     transform: translateX(-100px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -293,6 +363,7 @@
     opacity: 0;
     transform: translateX(100px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -304,6 +375,7 @@
     opacity: 0;
     transform: translateY(50px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -311,11 +383,14 @@
 }
 
 @keyframes glow {
-  0%, 100% {
-    box-shadow: 0 0 5px rgba(251, 191, 36, 0.5), 0 0 10px rgba(251, 191, 36, 0.3);
+
+  0%,
+  100% {
+    box-shadow: 0 0 5px rgba(212, 175, 55, 0.5), 0 0 10px rgba(212, 175, 55, 0.3);
   }
+
   50% {
-    box-shadow: 0 0 20px rgba(251, 191, 36, 0.8), 0 0 30px rgba(251, 191, 36, 0.5), 0 0 40px rgba(251, 191, 36, 0.3);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.8), 0 0 30px rgba(212, 175, 55, 0.5), 0 0 40px rgba(212, 175, 55, 0.3);
   }
 }
 

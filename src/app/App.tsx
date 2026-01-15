@@ -16,6 +16,23 @@ export default function App() {
   const [isMusicPlaying, setIsMusicPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
+  // Theme State
+  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark');
+
+  // Handle Theme Change
+  useEffect(() => {
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(prev => prev === 'dark' ? 'light' : 'dark');
+  };
+
   useEffect(() => {
     const audio = audioRef.current;
     if (audio) {
@@ -229,42 +246,42 @@ export default function App() {
   };
 
   return (
-    <div data-theme="wizarding" className="min-h-screen bg-gradient-to-b from-purple-900 via-indigo-900 to-slate-900">
+    <div data-theme="wizarding" className="min-h-screen bg-background text-foreground">
       {/* Navbar */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-indigo-900 to-black backdrop-blur-md border-b border-indigo-500/30">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-card/80 backdrop-blur-md border-b border-border">
         <div className="max-w-7xl mx-auto px-4 py-2 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center gap-5">
-              <img src={CCLogo} alt="Coding Club" className="h-16 pr-5 w-auto border-r-3 border-indigo-500/30" />
-              <h1 className="text-3xl font-bold text-amber-200 " style={{ fontFamily: 'Harry P, serif' }}>
+              <img src={CCLogo} alt="Coding Club" className="h-16 pr-5 w-auto border-r-3 border-border" />
+              <h1 className="text-3xl font-bold text-primary " style={{ fontFamily: 'Harry P, serif' }}>
                 CODIGO 4.0
               </h1>
             </div>
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-6">
-                <a href="#round1" className="text-lg text-amber-100/80 hover:text-amber-300 hover:scale-110 transition-all duration-300 px-4 py-2 relative group drop-shadow-[0_0_5px_rgba(251,191,36,0.3)]" style={{ fontFamily: 'Cinzel, serif' }}>
+                <a href="#round1" className="text-lg text-foreground/80 hover:text-primary hover:scale-110 transition-all duration-300 px-4 py-2 relative group drop-shadow-[0_0_5px_rgba(212,175,55,0.3)]" style={{ fontFamily: 'Cinzel, serif' }}>
                   Round 1
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-amber-400 group-hover:w-full transition-all duration-300"></span>
-                  <span className="absolute -top-1 -right-1 opacity-0 group-hover:opacity-100 text-yellow-300 text-xs transition-opacity animate-pulse">✨</span>
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
+                  <span className="absolute -top-1 -right-1 opacity-0 group-hover:opacity-100 text-primary text-xs transition-opacity animate-pulse">✨</span>
                 </a>
-                <a href="#round2" className="text-lg text-amber-100/80 hover:text-amber-300 hover:scale-110 transition-all duration-300 px-4 py-2 relative group drop-shadow-[0_0_5px_rgba(251,191,36,0.3)]" style={{ fontFamily: 'Cinzel, serif' }}>
+                <a href="#round2" className="text-lg text-foreground/80 hover:text-primary hover:scale-110 transition-all duration-300 px-4 py-2 relative group drop-shadow-[0_0_5px_rgba(212,175,55,0.3)]" style={{ fontFamily: 'Cinzel, serif' }}>
                   Round 2
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-amber-400 group-hover:w-full transition-all duration-300"></span>
-                  <span className="absolute -top-1 -right-1 opacity-0 group-hover:opacity-100 text-yellow-300 text-xs transition-opacity animate-pulse">✨</span>
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
+                  <span className="absolute -top-1 -right-1 opacity-0 group-hover:opacity-100 text-primary text-xs transition-opacity animate-pulse">✨</span>
                 </a>
-                <a href="#round3" className="text-lg text-amber-100/80 hover:text-amber-300 hover:scale-110 transition-all duration-300 px-4 py-2 relative group drop-shadow-[0_0_5px_rgba(251,191,36,0.3)]" style={{ fontFamily: 'Cinzel, serif' }}>
+                <a href="#round3" className="text-lg text-foreground/80 hover:text-primary hover:scale-110 transition-all duration-300 px-4 py-2 relative group drop-shadow-[0_0_5px_rgba(212,175,55,0.3)]" style={{ fontFamily: 'Cinzel, serif' }}>
                   Round 3
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-amber-400 group-hover:w-full transition-all duration-300"></span>
-                  <span className="absolute -top-1 -right-1 opacity-0 group-hover:opacity-100 text-yellow-300 text-xs transition-opacity animate-pulse">✨</span>
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
+                  <span className="absolute -top-1 -right-1 opacity-0 group-hover:opacity-100 text-primary text-xs transition-opacity animate-pulse">✨</span>
                 </a>
-                <a href="#register" className="text-lg text-amber-100/80 hover:text-amber-300 hover:scale-110 transition-all duration-300 px-4 py-2 relative group drop-shadow-[0_0_5px_rgba(251,191,36,0.3)]" style={{ fontFamily: 'Cinzel, serif' }}>
+                <a href="#register" className="text-lg text-foreground/80 hover:text-primary hover:scale-110 transition-all duration-300 px-4 py-2 relative group drop-shadow-[0_0_5px_rgba(212,175,55,0.3)]" style={{ fontFamily: 'Cinzel, serif' }}>
                   Register
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-amber-400 group-hover:w-full transition-all duration-300"></span>
-                  <span className="absolute -top-1 -right-1 opacity-0 group-hover:opacity-100 text-yellow-300 text-xs transition-opacity animate-pulse">✨</span>
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
+                  <span className="absolute -top-1 -right-1 opacity-0 group-hover:opacity-100 text-primary text-xs transition-opacity animate-pulse">✨</span>
                 </a>
               </div>
             </div>
-            <button className="md:hidden text-indigo-200 hover:text-yellow-300" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+            <button className="md:hidden text-muted-foreground hover:text-primary" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
               <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
               </svg>
@@ -273,22 +290,22 @@ export default function App() {
         </div>
         {/* Mobile Menu */}
         <div className={`md:hidden ${mobileMenuOpen ? 'block' : 'hidden'}`}>
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-gradient-to-r from-indigo-900 to-black">
-            <a href="#round1" onClick={() => setMobileMenuOpen(false)} className="block text-lg text-amber-100/80 hover:text-amber-300 hover:translate-x-2 transition-all duration-300 px-3 py-2 relative group" style={{ fontFamily: 'Cinzel, serif' }}>
+          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-card border-b border-border">
+            <a href="#round1" onClick={() => setMobileMenuOpen(false)} className="block text-lg text-muted-foreground hover:text-primary hover:translate-x-2 transition-all duration-300 px-3 py-2 relative group" style={{ fontFamily: 'Cinzel, serif' }}>
               Round 1
-              <span className="absolute -top-1 -right-1 opacity-0 group-hover:opacity-100 text-yellow-300 text-xs transition-opacity">✨</span>
+              <span className="absolute -top-1 -right-1 opacity-0 group-hover:opacity-100 text-primary text-xs transition-opacity">✨</span>
             </a>
-            <a href="#round2" onClick={() => setMobileMenuOpen(false)} className="block text-lg text-amber-100/80 hover:text-amber-300 hover:translate-x-2 transition-all duration-300 px-3 py-2 relative group" style={{ fontFamily: 'Cinzel, serif' }}>
+            <a href="#round2" onClick={() => setMobileMenuOpen(false)} className="block text-lg text-muted-foreground hover:text-primary hover:translate-x-2 transition-all duration-300 px-3 py-2 relative group" style={{ fontFamily: 'Cinzel, serif' }}>
               Round 2
-              <span className="absolute -top-1 -right-1 opacity-0 group-hover:opacity-100 text-yellow-300 text-xs transition-opacity">✨</span>
+              <span className="absolute -top-1 -right-1 opacity-0 group-hover:opacity-100 text-primary text-xs transition-opacity">✨</span>
             </a>
-            <a href="#round3" onClick={() => setMobileMenuOpen(false)} className="block text-lg text-amber-100/80 hover:text-amber-300 hover:translate-x-2 transition-all duration-300 px-3 py-2 relative group" style={{ fontFamily: 'Cinzel, serif' }}>
+            <a href="#round3" onClick={() => setMobileMenuOpen(false)} className="block text-lg text-muted-foreground hover:text-primary hover:translate-x-2 transition-all duration-300 px-3 py-2 relative group" style={{ fontFamily: 'Cinzel, serif' }}>
               Round 3
-              <span className="absolute -top-1 -right-1 opacity-0 group-hover:opacity-100 text-yellow-300 text-xs transition-opacity">✨</span>
+              <span className="absolute -top-1 -right-1 opacity-0 group-hover:opacity-100 text-primary text-xs transition-opacity">✨</span>
             </a>
-            <a href="#register" onClick={() => setMobileMenuOpen(false)} className="block text-lg text-amber-100/80 hover:text-amber-300 hover:translate-x-2 transition-all duration-300 px-3 py-2 relative group" style={{ fontFamily: 'Cinzel, serif' }}>
+            <a href="#register" onClick={() => setMobileMenuOpen(false)} className="block text-lg text-muted-foreground hover:text-primary hover:translate-x-2 transition-all duration-300 px-3 py-2 relative group" style={{ fontFamily: 'Cinzel, serif' }}>
               Register
-              <span className="absolute -top-1 -right-1 opacity-0 group-hover:opacity-100 text-yellow-300 text-xs transition-opacity">✨</span>
+              <span className="absolute -top-1 -right-1 opacity-0 group-hover:opacity-100 text-primary text-xs transition-opacity">✨</span>
             </a>
           </div>
         </div>
@@ -301,36 +318,37 @@ export default function App() {
           <img
             src={BgImg}
             alt="Hero Background"
-            className="w-full h-full object-cover opacity-100 mix-blend-overlay"
+            className="w-full h-full object-cover opacity-100 bg-gradient-to-b from-purple-900 via-indigo-900 to-slate-900"
           />
+          <div className="absolute inset-0 bg-background/60"></div>
         </div>
 
         <div className="max-w-7xl mx-auto text-center relative z-10 animate-fadeIn">
-          <h2 className="text-7xl md:text-9xl font-bold mb-8 bg-gradient-to-r from-amber-200 via-yellow-100 to-amber-200 bg-clip-text text-transparent leading-tight animate-float" style={{ fontFamily: 'Harry P, serif' }}>
+          <h2 className="text-7xl md:text-9xl font-bold mb-8 text-primary leading-tight animate-float" style={{ fontFamily: 'Harry P, serif' }}>
             CODIGO 4.0
           </h2>
 
-          <p className="text-2xl md:text-3xl text-purple-200 mb-4 tracking-wide" style={{ fontFamily: 'Crimson Text, serif' }}>
+          <p className="text-2xl md:text-3xl text-foreground mb-4 tracking-wide" style={{ fontFamily: 'Crimson Text, serif' }}>
             Organized by Coding Club RSCOE
           </p>
 
-          <p className="text-xl md:text-2xl text-purple-300 mb-16 font-light" style={{ fontFamily: 'Crimson Text, serif', fontStyle: 'italic' }}>
+          <p className="text-xl md:text-2xl text-muted-foreground mb-16 font-light" style={{ fontFamily: 'Crimson Text, serif', fontStyle: 'italic' }}>
             Team-based coding competition • 2-3 members per team
           </p>
 
           <div className="flex justify-center animate-bounceOnce">
             <a
               href="#register"
-              className="group relative px-12 py-5 bg-gradient-to-r from-amber-500 to-yellow-500 text-purple-900 rounded-xl font-bold text-xl transition-all duration-300 hover:from-amber-400 hover:to-yellow-400 transform hover:scale-110"
+              className="group relative px-12 py-5 bg-primary text-primary-foreground rounded-xl font-bold text-xl transition-all duration-300 hover:bg-primary/90 transform hover:scale-110"
               style={{
                 fontFamily: 'Cinzel, serif',
-                boxShadow: '0 0 20px rgb(255, 215, 0, 0.5), 0 0 40px rgb(255, 215, 0, 0.3)'
+                boxShadow: '0 0 20px rgba(212, 175, 55, 0.5), 0 0 40px rgba(212, 175, 55, 0.3)'
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.boxShadow = '0 0 30px rgb(255, 215, 0, 0.8), 0 0 60px rgb(255, 215, 0, 0.5), 0 0 80px rgb(255, 215, 0, 0.3)';
+                e.currentTarget.style.boxShadow = '0 0 30px rgba(212, 175, 55, 0.8), 0 0 60px rgba(212, 175, 55, 0.5), 0 0 80px rgba(212, 175, 55, 0.3)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.boxShadow = '0 0 20px rgb(255, 215, 0, 0.5), 0 0 40px rgb(255, 215, 0, 0.3)';
+                e.currentTarget.style.boxShadow = '0 0 20px rgba(212, 175, 55, 0.5), 0 0 40px rgba(212, 175, 55, 0.3)';
               }}
             >
               ⚡ Register Now ⚡
@@ -343,38 +361,38 @@ export default function App() {
       <section id="rounds" className="py-20 px-4 sm:px-6 lg:px-8 relative">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h3 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-amber-300 via-yellow-200 to-amber-300 bg-clip-text text-transparent" style={{ fontFamily: 'Cinzel, serif' }}>
+            <h3 className="text-4xl md:text-5xl font-bold mb-4 text-primary" style={{ fontFamily: 'Cinzel, serif' }}>
               The Three Trials
             </h3>
-            <p className="text-purple-300 text-lg" style={{ fontFamily: 'Crimson Text, serif' }}>
+            <p className="text-muted-foreground text-lg" style={{ fontFamily: 'Crimson Text, serif' }}>
               Each round tests a different aspect of your magical coding abilities
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Round 1 Card - Magical Portal Style */}
-            <article className="scroll-reveal group relative bg-gradient-to-br from-purple-700 via-indigo-800 to-purple-900 rounded-3xl p-8 border-2 border-purple-400/40 hover:border-amber-300 transition-all duration-500 hover:transform hover:scale-110 backdrop-blur-lg overflow-hidden shadow-2xl hover:shadow-amber-500/30">
+            <article className="scroll-reveal group relative bg-card rounded-3xl p-8 border-2 border-border hover:border-primary transition-all duration-500 hover:transform hover:scale-110 backdrop-blur-lg overflow-hidden shadow-2xl hover:shadow-primary/30">
               {/* Magical glow effect */}
-              <div className="absolute inset-0 bg-gradient-to-br from-amber-400/0 via-amber-400/0 to-amber-400/0 group-hover:from-amber-400/20 group-hover:via-transparent group-hover:to-amber-400/10 transition-all duration-500"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/0 via-primary/0 to-primary/0 group-hover:from-primary/20 group-hover:via-transparent group-hover:to-primary/10 transition-all duration-500"></div>
 
               {/* Sparkle effects on hover */}
               <div className="absolute top-4 right-4 text-2xl opacity-0 group-hover:opacity-100 group-hover:animate-sparkle transition-opacity duration-300">✨</div>
               <div className="absolute bottom-4 left-4 text-2xl opacity-0 group-hover:opacity-100 group-hover:animate-sparkle transition-opacity duration-300" style={{ animationDelay: '0.3s' }}>✨</div>
 
               <div className="relative z-10">
-                <div className="w-20 h-20 bg-gradient-to-br from-purple-400 to-indigo-500 rounded-2xl flex items-center justify-center mb-6 shadow-xl group-hover:shadow-amber-400/50 transition-shadow duration-300 group-hover:rotate-12 transform">
+                <div className="w-20 h-20 bg-muted rounded-2xl flex items-center justify-center mb-6 shadow-xl group-hover:shadow-primary/50 transition-shadow duration-300 group-hover:rotate-12 transform">
                   <span className="text-4xl">🔐</span>
                 </div>
 
-                <h4 className="text-3xl font-bold text-amber-200 mb-4 group-hover:text-amber-100 transition-colors" style={{ fontFamily: 'Cinzel, serif' }}>
+                <h4 className="text-3xl font-bold text-primary mb-4 group-hover:text-foreground transition-colors" style={{ fontFamily: 'Cinzel, serif' }}>
                   Round 1: Escape Room
                 </h4>
 
-                <p className="text-purple-100 mb-6 leading-relaxed text-lg" style={{ fontFamily: 'Crimson Text, serif' }}>
+                <p className="text-card-foreground mb-6 leading-relaxed text-lg" style={{ fontFamily: 'Crimson Text, serif' }}>
                   Solve a series of linked challenges to unlock the final QR and qualify for the next round.
                 </p>
 
-                <div className="flex items-center text-sm text-purple-200 bg-purple-900/40 px-4 py-2 rounded-lg">
+                <div className="flex items-center text-sm text-muted-foreground bg-muted px-4 py-2 rounded-lg">
                   <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
                   </svg>
@@ -384,28 +402,28 @@ export default function App() {
             </article>
 
             {/* Round 2 Card - Magical Portal Style */}
-            <article className="scroll-reveal group relative bg-gradient-to-br from-indigo-700 via-blue-800 to-purple-900 rounded-3xl p-8 border-2 border-indigo-400/40 hover:border-amber-300 transition-all duration-500 hover:transform hover:scale-110 backdrop-blur-lg overflow-hidden shadow-2xl hover:shadow-amber-500/30" style={{ animationDelay: '0.2s' }}>
+            <article className="scroll-reveal group relative bg-card rounded-3xl p-8 border-2 border-border hover:border-primary transition-all duration-500 hover:transform hover:scale-110 backdrop-blur-lg overflow-hidden shadow-2xl hover:shadow-primary/30" style={{ animationDelay: '0.2s' }}>
               {/* Magical glow effect */}
-              <div className="absolute inset-0 bg-gradient-to-br from-amber-400/0 via-amber-400/0 to-amber-400/0 group-hover:from-amber-400/20 group-hover:via-transparent group-hover:to-amber-400/10 transition-all duration-500"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/0 via-primary/0 to-primary/0 group-hover:from-primary/20 group-hover:via-transparent group-hover:to-primary/10 transition-all duration-500"></div>
 
               {/* Sparkle effects on hover */}
               <div className="absolute top-4 right-4 text-2xl opacity-0 group-hover:opacity-100 group-hover:animate-sparkle transition-opacity duration-300">✨</div>
               <div className="absolute bottom-4 left-4 text-2xl opacity-0 group-hover:opacity-100 group-hover:animate-sparkle transition-opacity duration-300" style={{ animationDelay: '0.3s' }}>✨</div>
 
               <div className="relative z-10">
-                <div className="w-20 h-20 bg-gradient-to-br from-indigo-400 to-blue-500 rounded-2xl flex items-center justify-center mb-6 shadow-xl group-hover:shadow-amber-400/50 transition-shadow duration-300 group-hover:rotate-12 transform">
+                <div className="w-20 h-20 bg-muted rounded-2xl flex items-center justify-center mb-6 shadow-xl group-hover:shadow-primary/50 transition-shadow duration-300 group-hover:rotate-12 transform">
                   <span className="text-4xl">🐛</span>
                 </div>
 
-                <h4 className="text-3xl font-bold text-amber-200 mb-4 group-hover:text-amber-100 transition-colors" style={{ fontFamily: 'Cinzel, serif' }}>
+                <h4 className="text-3xl font-bold text-primary mb-4 group-hover:text-foreground transition-colors" style={{ fontFamily: 'Cinzel, serif' }}>
                   Round 2: Bug Bounty
                 </h4>
 
-                <p className="text-purple-100 mb-6 leading-relaxed text-lg" style={{ fontFamily: 'Crimson Text, serif' }}>
+                <p className="text-card-foreground mb-6 leading-relaxed text-lg" style={{ fontFamily: 'Crimson Text, serif' }}>
                   Identify and fix logical and syntax errors in a given program to produce the correct output.
                 </p>
 
-                <div className="flex items-center text-sm text-purple-200 bg-indigo-900/40 px-4 py-2 rounded-lg">
+                <div className="flex items-center text-sm text-muted-foreground bg-muted px-4 py-2 rounded-lg">
                   <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
                   </svg>
@@ -415,28 +433,28 @@ export default function App() {
             </article>
 
             {/* Round 3 Card - Magical Portal Style */}
-            <article className="scroll-reveal group relative bg-gradient-to-br from-purple-800 via-pink-800 to-purple-900 rounded-3xl p-8 border-2 border-pink-400/40 hover:border-amber-300 transition-all duration-500 hover:transform hover:scale-110 backdrop-blur-lg overflow-hidden shadow-2xl hover:shadow-amber-500/30" style={{ animationDelay: '0.4s' }}>
+            <article className="scroll-reveal group relative bg-card rounded-3xl p-8 border-2 border-border hover:border-primary transition-all duration-500 hover:transform hover:scale-110 backdrop-blur-lg overflow-hidden shadow-2xl hover:shadow-primary/30" style={{ animationDelay: '0.4s' }}>
               {/* Magical glow effect */}
-              <div className="absolute inset-0 bg-gradient-to-br from-amber-400/0 via-amber-400/0 to-amber-400/0 group-hover:from-amber-400/20 group-hover:via-transparent group-hover:to-amber-400/10 transition-all duration-500"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/0 via-primary/0 to-primary/0 group-hover:from-primary/20 group-hover:via-transparent group-hover:to-primary/10 transition-all duration-500"></div>
 
               {/* Sparkle effects on hover */}
               <div className="absolute top-4 right-4 text-2xl opacity-0 group-hover:opacity-100 group-hover:animate-sparkle transition-opacity duration-300">✨</div>
               <div className="absolute bottom-4 left-4 text-2xl opacity-0 group-hover:opacity-100 group-hover:animate-sparkle transition-opacity duration-300" style={{ animationDelay: '0.3s' }}>✨</div>
 
               <div className="relative z-10">
-                <div className="w-20 h-20 bg-gradient-to-br from-pink-400 to-purple-500 rounded-2xl flex items-center justify-center mb-6 shadow-xl group-hover:shadow-amber-400/50 transition-shadow duration-300 group-hover:rotate-12 transform">
+                <div className="w-20 h-20 bg-muted rounded-2xl flex items-center justify-center mb-6 shadow-xl group-hover:shadow-primary/50 transition-shadow duration-300 group-hover:rotate-12 transform">
                   <span className="text-4xl">👁️‍🗨️</span>
                 </div>
 
-                <h4 className="text-3xl font-bold text-amber-200 mb-4 group-hover:text-amber-100 transition-colors" style={{ fontFamily: 'Cinzel, serif' }}>
+                <h4 className="text-3xl font-bold text-primary mb-4 group-hover:text-foreground transition-colors" style={{ fontFamily: 'Cinzel, serif' }}>
                   Round 3: Blind Coding
                 </h4>
 
-                <p className="text-purple-100 mb-6 leading-relaxed text-lg" style={{ fontFamily: 'Crimson Text, serif' }}>
+                <p className="text-card-foreground mb-6 leading-relaxed text-lg" style={{ fontFamily: 'Crimson Text, serif' }}>
                   Write correct code without execution under strict time blocks.
                 </p>
 
-                <div className="flex items-center text-sm text-purple-200 bg-pink-900/40 px-4 py-2 rounded-lg">
+                <div className="flex items-center text-sm text-muted-foreground bg-muted px-4 py-2 rounded-lg">
                   <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
                   </svg>
@@ -449,7 +467,7 @@ export default function App() {
       </section >
 
       {/* Round 1 Details - Spell Book */}
-      < section id="round1" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-purple-700 via-indigo-800 to-black" >
+      < section id="round1" className="py-20 px-4 sm:px-6 lg:px-8 bg-background" >
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left - Magical Illustration */}
@@ -457,31 +475,31 @@ export default function App() {
               <ImageWithFallback
                 src={escapeRoomImg}
                 alt="Magic Spell Book"
-                className="rounded-3xl shadow-2xl border-4 border-amber-400/30 hover:border-amber-300 transition-all duration-500 hover:scale-105 hover:shadow-amber-500/40 w-full h-auto max-h-[100vh] object-contain"
+                className="rounded-3xl shadow-2xl border-4 border-border hover:border-primary transition-all duration-500 hover:scale-105 hover:shadow-primary/40 w-full h-auto max-h-[100vh] object-contain"
               />
             </div>
 
             {/* Right - Description */}
             <div className="scroll-reveal order-1 lg:order-2" style={{ animationDelay: '0.2s' }}>
-              <div className="inline-block px-4 py-2 rounded-full bg-purple-600/50 border border-purple-400/50 text-purple-200 text-sm mb-4">
+              <div className="inline-block px-4 py-2 rounded-full bg-muted border border-border text-muted-foreground text-sm mb-4">
                 Round 1
               </div>
-              <h3 className="text-5xl font-bold mb-6 bg-gradient-to-r from-amber-200 via-yellow-100 to-amber-200 bg-clip-text text-transparent" style={{ fontFamily: 'Cinzel, serif' }}>
+              <h3 className="text-5xl font-bold mb-6 text-primary" style={{ fontFamily: 'Cinzel, serif' }}>
                 Escape Room
               </h3>
-              <p className="text-purple-100 text-xl mb-8 leading-relaxed" style={{ fontFamily: 'Crimson Text, serif' }}>
+              <p className="text-foreground text-xl mb-8 leading-relaxed" style={{ fontFamily: 'Crimson Text, serif' }}>
                 A 45-minute escape room–based challenge with four linked tasks that must be solved sequentially. Teams must unlock the final QR page within limited attempts to qualify for the next round.
               </p>
 
               <div className="space-y-6">
-                <div className="bg-purple-900/30 border border-purple-500/30 rounded-xl p-6 backdrop-blur-sm">
-                  <h4 className="text-xl font-bold text-amber-300 mb-3 flex items-center" style={{ fontFamily: 'Cinzel, serif' }}>
+                <div className="bg-card border border-border rounded-xl p-6 backdrop-blur-sm">
+                  <h4 className="text-xl font-bold text-primary mb-3 flex items-center" style={{ fontFamily: 'Cinzel, serif' }}>
                     <span className="text-2xl mr-3">📋</span>
                     Tasks / Details
                   </h4>
-                  <ul className="space-y-2 text-purple-100" style={{ fontFamily: 'Crimson Text, serif' }}>
+                  <ul className="space-y-2 text-foreground" style={{ fontFamily: 'Crimson Text, serif' }}>
                     <li className="flex items-start">
-                      <span className="text-amber-400 mr-3">✦</span>
+                      <span className="text-primary mr-3">✦</span>
                       <span>Solve 4 interconnected challenges in sequence</span>
                     </li>
                     <li className="flex items-start">
@@ -512,13 +530,13 @@ export default function App() {
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-indigo-900/30 border border-indigo-500/30 rounded-xl p-4 backdrop-blur-sm">
-                    <div className="text-amber-300 font-bold mb-1" style={{ fontFamily: 'Cinzel, serif' }}>Duration</div>
-                    <div className="text-purple-100 text-lg">45 minutes</div>
+                  <div className="bg-muted border border-border rounded-xl p-4 backdrop-blur-sm">
+                    <div className="text-primary font-bold mb-1" style={{ fontFamily: 'Cinzel, serif' }}>Duration</div>
+                    <div className="text-foreground text-lg">45 minutes</div>
                   </div>
-                  <div className="bg-indigo-900/30 border border-indigo-500/30 rounded-xl p-4 backdrop-blur-sm">
-                    <div className="text-amber-300 font-bold mb-1" style={{ fontFamily: 'Cinzel, serif' }}>Attempts</div>
-                    <div className="text-purple-100 text-lg">3 maximum</div>
+                  <div className="bg-muted border border-border rounded-xl p-4 backdrop-blur-sm">
+                    <div className="text-primary font-bold mb-1" style={{ fontFamily: 'Cinzel, serif' }}>Attempts</div>
+                    <div className="text-foreground text-lg">3 maximum</div>
                   </div>
                 </div>
               </div>
@@ -528,28 +546,28 @@ export default function App() {
       </section >
 
       {/* Round 2 Details - Tournament */}
-      < section id="round2" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-indigo-800 via-blue-900 to-black" >
+      < section id="round2" className="py-20 px-4 sm:px-6 lg:px-8 bg-background" >
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left - Description */}
             <div className="scroll-reveal">
-              <div className="inline-block px-4 py-2 rounded-full bg-indigo-600/50 border border-indigo-400/50 text-indigo-200 text-sm mb-4">
+              <div className="inline-block px-4 py-2 rounded-full bg-muted border border-border text-muted-foreground text-sm mb-4">
                 Round 2
               </div>
-              <h3 className="text-5xl font-bold mb-6 bg-gradient-to-r from-amber-200 via-yellow-100 to-amber-200 bg-clip-text text-transparent" style={{ fontFamily: 'Cinzel, serif' }}>
+              <h3 className="text-5xl font-bold mb-6 text-primary" style={{ fontFamily: 'Cinzel, serif' }}>
                 Bug Bounty
               </h3>
-              <p className="text-purple-100 text-xl mb-8 leading-relaxed" style={{ fontFamily: 'Crimson Text, serif' }}>
+              <p className="text-foreground text-xl mb-8 leading-relaxed" style={{ fontFamily: 'Crimson Text, serif' }}>
                 Participants are given a working program containing logical and syntax errors. The task is to analyze the code, identify bugs, and fix them to produce the correct output without changing the program's core structure.
               </p>
 
               <div className="space-y-6">
-                <div className="bg-indigo-900/30 border border-indigo-500/30 rounded-xl p-6 backdrop-blur-sm">
-                  <h4 className="text-xl font-bold text-amber-300 mb-3 flex items-center" style={{ fontFamily: 'Cinzel, serif' }}>
+                <div className="bg-card border border-border rounded-xl p-6 backdrop-blur-sm">
+                  <h4 className="text-xl font-bold text-primary mb-3 flex items-center" style={{ fontFamily: 'Cinzel, serif' }}>
                     <span className="text-2xl mr-3">📋</span>
                     Tasks / Details
                   </h4>
-                  <ul className="space-y-2 text-purple-100" style={{ fontFamily: 'Crimson Text, serif' }}>
+                  <ul className="space-y-2 text-foreground" style={{ fontFamily: 'Crimson Text, serif' }}>
                     <li className="flex items-start">
                       <span className="text-amber-400 mr-3">✦</span>
                       <span>Identify and fix logical and syntax bugs</span>
@@ -578,13 +596,13 @@ export default function App() {
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-blue-900/30 border border-blue-500/30 rounded-xl p-4 backdrop-blur-sm">
-                    <div className="text-amber-300 font-bold mb-1" style={{ fontFamily: 'Cinzel, serif' }}>Duration</div>
-                    <div className="text-purple-100 text-lg">60 minutes</div>
+                  <div className="bg-muted border border-border rounded-xl p-4 backdrop-blur-sm">
+                    <div className="text-primary font-bold mb-1" style={{ fontFamily: 'Cinzel, serif' }}>Duration</div>
+                    <div className="text-foreground text-lg">60 minutes</div>
                   </div>
-                  <div className="bg-blue-900/30 border border-blue-500/30 rounded-xl p-4 backdrop-blur-sm">
-                    <div className="text-amber-300 font-bold mb-1" style={{ fontFamily: 'Cinzel, serif' }}>Focus</div>
-                    <div className="text-purple-100 text-lg">Debugging</div>
+                  <div className="bg-muted border border-border rounded-xl p-4 backdrop-blur-sm">
+                    <div className="text-primary font-bold mb-1" style={{ fontFamily: 'Cinzel, serif' }}>Focus</div>
+                    <div className="text-foreground text-lg">Debugging</div>
                   </div>
                 </div>
               </div>
@@ -595,7 +613,7 @@ export default function App() {
               <ImageWithFallback
                 src={bugBountyImg}
                 alt="Magic Tournament"
-                className="rounded-3xl shadow-2xl border-4 border-amber-400/30 hover:border-amber-300 transition-all duration-500 hover:scale-105 hover:shadow-amber-500/40 max-h-[100vh] object-contain"
+                className="rounded-3xl shadow-2xl border-4 border-border hover:border-primary transition-all duration-500 hover:scale-105 hover:shadow-primary/40 max-h-[100vh] object-contain"
               />
             </div>
           </div>
@@ -603,7 +621,7 @@ export default function App() {
       </section >
 
       {/* Round 3 Details - Grand Ritual */}
-      < section id="round3" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-purple-800 via-pink-900 to-black" >
+      < section id="round3" className="py-20 px-4 sm:px-6 lg:px-8 bg-background" >
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left - Magical Illustration */}
@@ -611,29 +629,29 @@ export default function App() {
               <ImageWithFallback
                 src={blindCodingImg}
                 alt="Potion Brewing"
-                className="rounded-3xl shadow-2xl border-4 border-amber-400/30 hover:border-amber-300 transition-all duration-500 hover:scale-105 hover:shadow-amber-500/40 max-h-[100vh] object-contain"
+                className="rounded-3xl shadow-2xl border-4 border-border hover:border-primary transition-all duration-500 hover:scale-105 hover:shadow-primary/40 max-h-[100vh] object-contain"
               />
             </div>
 
             {/* Right - Description */}
             <div className="scroll-reveal order-1 lg:order-2" style={{ animationDelay: '0.2s' }}>
-              <div className="inline-block px-4 py-2 rounded-full bg-pink-600/50 border border-pink-400/50 text-pink-200 text-sm mb-4">
+              <div className="inline-block px-4 py-2 rounded-full bg-muted border border-border text-muted-foreground text-sm mb-4">
                 Round 3
               </div>
-              <h3 className="text-5xl font-bold mb-6 bg-gradient-to-r from-amber-200 via-yellow-100 to-amber-200 bg-clip-text text-transparent" style={{ fontFamily: 'Cinzel, serif' }}>
+              <h3 className="text-5xl font-bold mb-6 text-primary" style={{ fontFamily: 'Cinzel, serif' }}>
                 Blind Coding
               </h3>
-              <p className="text-purple-100 text-xl mb-8 leading-relaxed" style={{ fontFamily: 'Crimson Text, serif' }}>
+              <p className="text-foreground text-xl mb-8 leading-relaxed" style={{ fontFamily: 'Crimson Text, serif' }}>
                 A blind coding challenge consisting of three coding problems with increasing difficulty. Code must be written without execution, compilation, or output verification, testing accuracy and logic under strict time limits.
               </p>
 
               <div className="space-y-6">
-                <div className="bg-purple-900/30 border border-purple-500/30 rounded-xl p-6 backdrop-blur-sm">
-                  <h4 className="text-xl font-bold text-amber-300 mb-3 flex items-center" style={{ fontFamily: 'Cinzel, serif' }}>
+                <div className="bg-card border border-border rounded-xl p-6 backdrop-blur-sm">
+                  <h4 className="text-xl font-bold text-primary mb-3 flex items-center" style={{ fontFamily: 'Cinzel, serif' }}>
                     <span className="text-2xl mr-3">📋</span>
                     Tasks / Details
                   </h4>
-                  <ul className="space-y-2 text-purple-100" style={{ fontFamily: 'Crimson Text, serif' }}>
+                  <ul className="space-y-2 text-foreground" style={{ fontFamily: 'Crimson Text, serif' }}>
                     <li className="flex items-start">
                       <span className="text-amber-400 mr-3">✦</span>
                       <span>3 fixed 20-minute blocks</span>
@@ -666,13 +684,13 @@ export default function App() {
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-pink-900/30 border border-pink-500/30 rounded-xl p-4 backdrop-blur-sm">
-                    <div className="text-amber-300 font-bold mb-1" style={{ fontFamily: 'Cinzel, serif' }}>Duration</div>
-                    <div className="text-purple-100 text-lg">60 minutes</div>
+                  <div className="bg-muted border border-border rounded-xl p-4 backdrop-blur-sm">
+                    <div className="text-primary font-bold mb-1" style={{ fontFamily: 'Cinzel, serif' }}>Duration</div>
+                    <div className="text-foreground text-lg">60 minutes</div>
                   </div>
-                  <div className="bg-pink-900/30 border border-pink-500/30 rounded-xl p-4 backdrop-blur-sm">
-                    <div className="text-amber-300 font-bold mb-1" style={{ fontFamily: 'Cinzel, serif' }}>Per Problem</div>
-                    <div className="text-purple-100 text-lg">20 minutes</div>
+                  <div className="bg-muted border border-border rounded-xl p-4 backdrop-blur-sm">
+                    <div className="text-primary font-bold mb-1" style={{ fontFamily: 'Cinzel, serif' }}>Per Problem</div>
+                    <div className="text-foreground text-lg">20 minutes</div>
                   </div>
                 </div>
               </div>
@@ -685,72 +703,72 @@ export default function App() {
       < section id="details" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-transparent via-indigo-950/50 to-transparent" >
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h3 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-amber-300 via-yellow-200 to-amber-300 bg-clip-text text-transparent" style={{ fontFamily: 'Cinzel, serif' }}>
+            <h3 className="text-4xl md:text-5xl font-bold mb-4 text-primary" style={{ fontFamily: 'Cinzel, serif' }}>
               The Sacred Scrolls
             </h3>
-            <p className="text-purple-300 text-lg" style={{ fontFamily: 'Crimson Text, serif' }}>
+            <p className="text-muted-foreground text-lg" style={{ fontFamily: 'Crimson Text, serif' }}>
               Everything you need to know before embarking on your journey
             </p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Event Details */}
-            <div className="bg-gradient-to-br from-purple-800/30 via-indigo-800/30 to-purple-900/30 rounded-2xl p-8 border border-purple-500/30 backdrop-blur-sm">
-              <h4 className="text-2xl font-bold text-amber-300 mb-6 flex items-center" style={{ fontFamily: 'Cinzel, serif' }}>
+            <div className="bg-card border border-border rounded-2xl p-8 backdrop-blur-sm">
+              <h4 className="text-2xl font-bold text-primary mb-6 flex items-center" style={{ fontFamily: 'Cinzel, serif' }}>
                 <span className="text-3xl mr-3">📜</span>
                 Event Details
               </h4>
 
               <dl className="space-y-4" style={{ fontFamily: 'Crimson Text, serif' }}>
-                <div className="flex border-b border-purple-500/20 pb-3">
-                  <dt className="text-purple-300 w-32">Date:</dt>
-                  <dd className="text-purple-100 font-semibold">3 Feb 2026</dd>
+                <div className="flex border-b border-border pb-3">
+                  <dt className="text-muted-foreground w-32">Date:</dt>
+                  <dd className="text-foreground font-semibold">3 Feb 2026</dd>
                 </div>
-                <div className="flex border-b border-purple-500/20 pb-3">
-                  <dt className="text-purple-300 w-32">Time:</dt>
-                  <dd className="text-purple-100 font-semibold">10:00 AM - 3:00 PM</dd>
+                <div className="flex border-b border-border pb-3">
+                  <dt className="text-muted-foreground w-32">Time:</dt>
+                  <dd className="text-foreground font-semibold">10:00 AM - 3:00 PM</dd>
                 </div>
-                <div className="flex border-b border-purple-500/20 pb-3">
-                  <dt className="text-purple-300 w-32">Venue:</dt>
-                  <dd className="text-purple-100 font-semibold">JSPM's RSCOE</dd>
+                <div className="flex border-b border-border pb-3">
+                  <dt className="text-muted-foreground w-32">Venue:</dt>
+                  <dd className="text-foreground font-semibold">JSPM's RSCOE</dd>
                 </div>
-                <div className="flex border-b border-purple-500/20 pb-3">
-                  <dt className="text-purple-300 w-32">Format:</dt>
-                  <dd className="text-purple-100 font-semibold">Team Competition</dd>
+                <div className="flex border-b border-border pb-3">
+                  <dt className="text-muted-foreground w-32">Format:</dt>
+                  <dd className="text-foreground font-semibold">Team Competition</dd>
                 </div>
                 <div className="flex pb-3">
-                  <dt className="text-purple-300 w-32">Platform:</dt>
-                  <dd className="text-purple-100 font-semibold">Offline College</dd>
+                  <dt className="text-muted-foreground w-32">Platform:</dt>
+                  <dd className="text-foreground font-semibold">Offline College</dd>
                 </div>
               </dl>
             </div>
 
             {/* Rules & Requirements */}
-            <div className="bg-gradient-to-br from-indigo-800/30 via-purple-800/30 to-indigo-900/30 rounded-2xl p-8 border border-indigo-500/30 backdrop-blur-sm">
-              <h4 className="text-2xl font-bold text-amber-300 mb-6 flex items-center" style={{ fontFamily: 'Cinzel, serif' }}>
+            <div className="bg-card border border-border rounded-2xl p-8 backdrop-blur-sm">
+              <h4 className="text-2xl font-bold text-primary mb-6 flex items-center" style={{ fontFamily: 'Cinzel, serif' }}>
                 <span className="text-3xl mr-3">⚡</span>
                 Rules & Requirements
               </h4>
 
-              <ul className="space-y-4 text-purple-100" style={{ fontFamily: 'Crimson Text, serif' }}>
+              <ul className="space-y-4 text-foreground" style={{ fontFamily: 'Crimson Text, serif' }}>
                 <li className="flex items-start">
-                  <span className="text-amber-400 mr-3 mt-1">✦</span>
+                  <span className="text-primary mr-3 mt-1">✦</span>
                   <span>Must be enrolled in a recognized academy of computing arts</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-amber-400 mr-3 mt-1">✦</span>
+                  <span className="text-primary mr-3 mt-1">✦</span>
                   <span>Proficiency in at least one programming language (Python, Java, C++, or JavaScript)</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-amber-400 mr-3 mt-1">✦</span>
+                  <span className="text-primary mr-3 mt-1">✦</span>
                   <span>Bring your own enchanted device (laptop with stable internet)</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-amber-400 mr-3 mt-1">✦</span>
+                  <span className="text-primary mr-3 mt-1">✦</span>
                   <span>No use of dark magic (plagiarism, unauthorized tools, or external assistance)</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-amber-400 mr-3 mt-1">✦</span>
+                  <span className="text-primary mr-3 mt-1">✦</span>
                   <span>Code must be original and written during the event</span>
                 </li>
               </ul>
@@ -789,17 +807,17 @@ export default function App() {
       < section id="register" className="py-20 px-4 sm:px-6 lg:px-8" >
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-12">
-            <h3 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-amber-300 via-yellow-200 to-amber-300 bg-clip-text text-transparent" style={{ fontFamily: 'Cinzel, serif' }}>
+            <h3 className="text-4xl md:text-5xl font-bold mb-4 text-primary" style={{ fontFamily: 'Cinzel, serif' }}>
               Join the Quest
             </h3>
-            <p className="text-purple-300 text-lg" style={{ fontFamily: 'Crimson Text, serif' }}>
+            <p className="text-muted-foreground text-lg" style={{ fontFamily: 'Crimson Text, serif' }}>
               Register now to secure your place among the elite code wizards
             </p>
           </div>
 
-          <form onSubmit={handleSubmit} className="bg-gradient-to-br from-purple-800/40 via-indigo-800/40 to-purple-900/40 rounded-2xl p-8 border border-purple-500/30 backdrop-blur-sm space-y-6">
+          <form onSubmit={handleSubmit} className="bg-card border border-border rounded-2xl p-8 backdrop-blur-sm space-y-6">
             <div>
-              <label htmlFor="teamName" className="block text-purple-200 mb-2" style={{ fontFamily: 'Crimson Text, serif' }}>
+              <label htmlFor="teamName" className="block text-foreground mb-2" style={{ fontFamily: 'Crimson Text, serif' }}>
                 Team Name *
               </label>
               <input
@@ -807,13 +825,13 @@ export default function App() {
                 id="teamName"
                 name="teamName"
                 required
-                className="w-full px-4 py-3 bg-purple-900/50 border border-purple-500/50 rounded-lg text-purple-100 placeholder-purple-400 focus:outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-400/50 transition-all"
+                className="w-full px-4 py-3 bg-muted border border-border rounded-lg text-foreground placeholder-muted-foreground focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/50 transition-all"
                 placeholder="Enter your team name"
               />
             </div>
 
             <div>
-              <label htmlFor="name" className="block text-purple-200 mb-2" style={{ fontFamily: 'Crimson Text, serif' }}>
+              <label htmlFor="name" className="block text-foreground mb-2" style={{ fontFamily: 'Crimson Text, serif' }}>
                 Team Leader Name *
               </label>
               <input
@@ -821,13 +839,13 @@ export default function App() {
                 id="name"
                 name="name"
                 required
-                className="w-full px-4 py-3 bg-purple-900/50 border border-purple-500/50 rounded-lg text-purple-100 placeholder-purple-400 focus:outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-400/50 transition-all"
+                className="w-full px-4 py-3 bg-muted border border-border rounded-lg text-foreground placeholder-muted-foreground focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/50 transition-all"
                 placeholder="Enter your full name"
               />
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-purple-200 mb-2" style={{ fontFamily: 'Crimson Text, serif' }}>
+              <label htmlFor="email" className="block text-foreground mb-2" style={{ fontFamily: 'Crimson Text, serif' }}>
                 Email Address *
               </label>
               <input
@@ -835,12 +853,12 @@ export default function App() {
                 id="email"
                 name="email"
                 required
-                className="w-full px-4 py-3 bg-purple-900/50 border border-purple-500/50 rounded-lg text-purple-100 placeholder-purple-400 focus:outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-400/50 transition-all"
+                className="w-full px-4 py-3 bg-muted border border-border rounded-lg text-foreground placeholder-muted-foreground focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/50 transition-all"
                 placeholder="wizard@example.com"
               />
             </div>
             <div>
-              <label htmlFor="member2Name" className="block text-purple-200 mb-2" style={{ fontFamily: 'Crimson Text, serif' }}>
+              <label htmlFor="member2Name" className="block text-foreground mb-2" style={{ fontFamily: 'Crimson Text, serif' }}>
                 Member 2 Name *
               </label>
               <input
@@ -848,25 +866,25 @@ export default function App() {
                 id="member2Name"
                 name="member2Name"
                 required
-                className="w-full px-4 py-3 bg-purple-900/50 border border-purple-500/50 rounded-lg text-purple-100 placeholder-purple-400 focus:outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-400/50 transition-all"
+                className="w-full px-4 py-3 bg-muted border border-border rounded-lg text-foreground placeholder-muted-foreground focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/50 transition-all"
                 placeholder="Enter member 2 name"
               />
             </div>
 
             <div>
-              <label htmlFor="member3Name" className="block text-purple-200 mb-2" style={{ fontFamily: 'Crimson Text, serif' }}>
+              <label htmlFor="member3Name" className="block text-foreground mb-2" style={{ fontFamily: 'Crimson Text, serif' }}>
                 Member 3 Name (Optional)
               </label>
               <input
                 type="text"
                 id="member3Name"
                 name="member3Name"
-                className="w-full px-4 py-3 bg-purple-900/50 border border-purple-500/50 rounded-lg text-purple-100 placeholder-purple-400 focus:outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-400/50 transition-all"
+                className="w-full px-4 py-3 bg-muted border border-border rounded-lg text-foreground placeholder-muted-foreground focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/50 transition-all"
                 placeholder="Enter member 3 name"
               />
             </div>
             <div>
-              <label htmlFor="college" className="block text-purple-200 mb-2" style={{ fontFamily: 'Crimson Text, serif' }}>
+              <label htmlFor="college" className="block text-foreground mb-2" style={{ fontFamily: 'Crimson Text, serif' }}>
                 College *
               </label>
               <input
@@ -874,13 +892,13 @@ export default function App() {
                 id="college"
                 name="college"
                 required
-                className="w-full px-4 py-3 bg-purple-900/50 border border-purple-500/50 rounded-lg text-purple-100 placeholder-purple-400 focus:outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-400/50 transition-all"
+                className="w-full px-4 py-3 bg-muted border border-border rounded-lg text-foreground placeholder-muted-foreground focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/50 transition-all"
                 placeholder="Your college name"
               />
             </div>
 
             <div>
-              <label htmlFor="phone" className="block text-purple-200 mb-2" style={{ fontFamily: 'Crimson Text, serif' }}>
+              <label htmlFor="phone" className="block text-foreground mb-2" style={{ fontFamily: 'Crimson Text, serif' }}>
                 Phone Number *
               </label>
               <input
@@ -888,28 +906,28 @@ export default function App() {
                 id="phone"
                 name="phone"
                 required
-                className="w-full px-4 py-3 bg-purple-900/50 border border-purple-500/50 rounded-lg text-purple-100 placeholder-purple-400 focus:outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-400/50 transition-all"
+                className="w-full px-4 py-3 bg-muted border border-border rounded-lg text-foreground placeholder-muted-foreground focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/50 transition-all"
                 placeholder="+91 1234567890"
               />
             </div>
 
             {/* QR Code for Payment */}
-            <div className="flex flex-col items-center justify-center p-6 bg-purple-900/30 border border-purple-500/30 rounded-lg">
-              <h3 className="text-xl font-bold text-amber-200 mb-4" style={{ fontFamily: 'Cinzel, serif' }}>
+            <div className="flex flex-col items-center justify-center p-6 bg-muted border border-border rounded-lg">
+              <h3 className="text-xl font-bold text-primary mb-4" style={{ fontFamily: 'Cinzel, serif' }}>
                 Scan to Pay
               </h3>
               <ImageWithFallback
                 src={qrCodeImg}
                 alt="UPI Payment QR Code"
-                className="w-64 h-64 rounded-lg shadow-xl border-4 border-amber-400/30 hover:border-amber-300 transition-all duration-300"
+                className="w-64 h-64 rounded-lg shadow-xl border-4 border-primary/30 hover:border-primary transition-all duration-300"
               />
-              <p className="text-purple-200 text-sm mt-4 text-center" style={{ fontFamily: 'Crimson Text, serif' }}>
+              <p className="text-foreground text-sm mt-4 text-center" style={{ fontFamily: 'Crimson Text, serif' }}>
                 Scan this QR code with any UPI app to make payment
               </p>
             </div>
 
             <div>
-              <label htmlFor="upiId" className="block text-purple-200 mb-2" style={{ fontFamily: 'Crimson Text, serif' }}>
+              <label htmlFor="upiId" className="block text-foreground mb-2" style={{ fontFamily: 'Crimson Text, serif' }}>
                 UPI Transaction ID *
               </label>
               <input
@@ -917,12 +935,12 @@ export default function App() {
                 id="upiId"
                 name="upiId"
                 required
-                className="w-full px-4 py-3 bg-purple-900/50 border border-purple-500/50 rounded-lg text-purple-100 placeholder-purple-400 focus:outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-400/50 transition-all"
+                className="w-full px-4 py-3 bg-muted border border-border rounded-lg text-foreground placeholder-muted-foreground focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/50 transition-all"
                 placeholder="Enter UPI transaction ID"
               />
             </div>
             <div>
-              <label htmlFor="screenshot" className="block text-purple-200 mb-2" style={{ fontFamily: 'Crimson Text, serif' }}>
+              <label htmlFor="screenshot" className="block text-foreground mb-2" style={{ fontFamily: 'Crimson Text, serif' }}>
                 Transaction Screenshot *
               </label>
               <input
@@ -931,16 +949,16 @@ export default function App() {
                 name="screenshot"
                 required
                 accept="image/*"
-                className="w-full px-4 py-3 bg-purple-900/50 border border-purple-500/50 rounded-lg text-purple-100 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-amber-500 file:text-purple-900 file:font-semibold hover:file:bg-amber-400 file:cursor-pointer focus:outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-400/50 transition-all"
+                className="w-full px-4 py-3 bg-muted border border-border rounded-lg text-foreground file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-primary file:text-primary-foreground file:font-semibold hover:file:bg-primary/90 file:cursor-pointer focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/50 transition-all"
               />
-              <p className="mt-2 text-sm text-purple-300" style={{ fontFamily: 'Crimson Text, serif' }}>
+              <p className="mt-2 text-sm text-muted-foreground" style={{ fontFamily: 'Crimson Text, serif' }}>
                 Upload payment screenshot (JPG, PNG, or PDF)
               </p>
             </div>
 
             <button
               type="submit"
-              className="w-full px-8 py-4 bg-gradient-to-r from-amber-500 to-yellow-500 text-purple-900 rounded-lg hover:from-amber-400 hover:to-yellow-400 transition-all transform hover:scale-105 shadow-lg shadow-amber-500/50 font-bold text-lg"
+              className="w-full px-8 py-4 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-all transform hover:scale-105 shadow-lg shadow-primary/50 font-bold text-lg"
               style={{ fontFamily: 'Cinzel, serif' }}
               disabled={isSubmitting}
             >
@@ -951,25 +969,25 @@ export default function App() {
       </section >
 
       {/* Footer */}
-      < footer className="bg-gradient-to-b from-transparent to-black/50 border-t border-purple-500/30 py-12 px-4 sm:px-6 lg:px-8" >
+      < footer className="bg-muted/50 border-t border-border py-12 px-4 sm:px-6 lg:px-8" >
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
             {/* About */}
             <div>
-              <h5 className="text-amber-300 font-bold mb-4 text-lg" style={{ fontFamily: 'Cinzel, serif' }}>
+              <h5 className="text-primary font-bold mb-4 text-lg" style={{ fontFamily: 'Cinzel, serif' }}>
                 About CODIGO
               </h5>
-              <p className="text-purple-300 text-sm leading-relaxed" style={{ fontFamily: 'Crimson Text, serif' }}>
+              <p className="text-muted-foreground text-sm leading-relaxed" style={{ fontFamily: 'Crimson Text, serif' }}>
                 The premier wizarding coding competition bringing together the brightest minds in algorithmic sorcery.
               </p>
             </div>
 
             {/* Quick Links */}
             <div>
-              <h5 className="text-amber-300 font-bold mb-4 text-lg" style={{ fontFamily: 'Cinzel, serif' }}>
+              <h5 className="text-primary font-bold mb-4 text-lg" style={{ fontFamily: 'Cinzel, serif' }}>
                 Quick Links
               </h5>
-              <ul className="space-y-2 text-purple-300 text-sm" style={{ fontFamily: 'Crimson Text, serif' }}>
+              <ul className="space-y-2 text-muted-foreground text-sm" style={{ fontFamily: 'Crimson Text, serif' }}>
                 <li><a href="#hero" className="hover:text-amber-300 transition-colors">Home</a></li>
                 <li><a href="#rounds" className="hover:text-amber-300 transition-colors">Rounds</a></li>
                 <li><a href="#details" className="hover:text-amber-300 transition-colors">Details</a></li>
@@ -979,10 +997,10 @@ export default function App() {
 
             {/* Contact */}
             <div>
-              <h5 className="text-amber-300 font-bold mb-4 text-lg" style={{ fontFamily: 'Cinzel, serif' }}>
+              <h5 className="text-primary font-bold mb-4 text-lg" style={{ fontFamily: 'Cinzel, serif' }}>
                 Contact
               </h5>
-              <ul className="space-y-2 text-purple-300 text-sm" style={{ fontFamily: 'Crimson Text, serif' }}>
+              <ul className="space-y-2 text-muted-foreground text-sm" style={{ fontFamily: 'Crimson Text, serif' }}>
                 <li>📧 codingclub@jspmrscoe.edu.in</li>
                 <li>📞 +91-7020030540</li>
                 <li>📍 JSPM's RSCOE</li>
@@ -1017,19 +1035,41 @@ export default function App() {
             </div>
           </div>
 
-          <div className="border-t border-purple-500/30 pt-8 text-center">
-            <p className="text-purple-300 text-sm" style={{ fontFamily: 'Crimson Text, serif' }}>
+          <div className="border-t border-border pt-8 text-center">
+            <p className="text-muted-foreground text-sm" style={{ fontFamily: 'Crimson Text, serif' }}>
               © 2026 CODIGO. All magical rights reserved. May your code be bug-free and your algorithms swift.
             </p>
           </div>
         </div>
       </footer >
-      <div className="fixed bottom-6 right-6 z-50">
+      <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-4">
+        {/* Theme Toggle Button */}
+        <button
+          onClick={toggleTheme}
+          className={`w-14 h-14 rounded-full flex items-center justify-center border-2 transition-all duration-300 transform hover:scale-110 shadow-[0_0_15px_rgba(212,175,55,0.5)] ${theme === 'dark'
+            ? 'bg-card border-primary text-primary'
+            : 'bg-card border-border text-muted-foreground'
+            }`}
+          style={{ backdropFilter: 'blur(4px)' }}
+          title={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+        >
+          {theme === 'dark' ? (
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+          ) : (
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+            </svg>
+          )}
+        </button>
+
+        {/* Music Toggle Button */}
         <button
           onClick={toggleMusic}
-          className={`w-14 h-14 rounded-full flex items-center justify-center border-2 transition-all duration-300 transform hover:scale-110 shadow-[0_0_15px_rgba(251,191,36,0.5)] ${isMusicPlaying
-            ? 'bg-purple-900/80 border-amber-400 text-amber-300'
-            : 'bg-indigo-950/80 border-purple-400 text-purple-400'
+          className={`w-14 h-14 rounded-full flex items-center justify-center border-2 transition-all duration-300 transform hover:scale-110 shadow-[0_0_15px_rgba(212,175,55,0.5)] ${isMusicPlaying
+            ? 'bg-card border-primary text-primary'
+            : 'bg-card border-border text-muted-foreground'
             }`}
           style={{ backdropFilter: 'blur(4px)' }}
           title={isMusicPlaying ? 'Mute Music' : 'Play Music'}
