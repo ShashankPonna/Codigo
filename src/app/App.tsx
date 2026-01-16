@@ -785,7 +785,7 @@ export default function App() {
               <ul className="space-y-4 text-foreground" style={{ fontFamily: 'Crimson Text, serif' }}>
                 <li className="flex items-start">
                   <span className="text-primary mr-3 mt-1">✦</span>
-                  <span>Must be enrolled in a recognized academy of computing arts</span>
+                  <span>Must be enrolled in a recognized Engineering College.</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-primary mr-3 mt-1">✦</span>
