@@ -953,7 +953,10 @@ export default function App() {
                 alt="UPI Payment QR Code"
                 className="w-64 h-64 rounded-lg shadow-xl border-4 border-primary/30 hover:border-primary transition-all duration-300"
               />
-              <p className="text-foreground text-sm mt-4 text-center" style={{ fontFamily: 'Crimson Text, serif' }}>
+              <p className="text-primary text-xl font-bold mt-4 text-center" style={{ fontFamily: 'Cinzel, serif' }}>
+                Registration Fees : Rs.120
+              </p>
+              <p className="text-foreground text-sm mt-2 text-center" style={{ fontFamily: 'Crimson Text, serif' }}>
                 Scan this QR code with any UPI app to make payment
               </p>
             </div>
