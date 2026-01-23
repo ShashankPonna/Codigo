@@ -818,17 +818,17 @@ export default function App() {
               <div className="text-center p-6 bg-gradient-to-br from-yellow-500/20 to-amber-600/20 rounded-xl border border-amber-400/40">
                 <div className="text-5xl mb-3">🥇</div>
                 <div className="text-2xl font-bold text-amber-200 mb-2" style={{ fontFamily: 'Cinzel, serif' }}>First Place</div>
-                <div className="text-xl text-purple-200" style={{ fontFamily: 'Crimson Text, serif' }}> Rs.4000</div>
+                <div className="text-xl text-purple-200" style={{ fontFamily: 'Crimson Text, serif' }}> Rs.2000 + 3 Wet'nJoy Tickets</div>
               </div>
               <div className="text-center p-6 bg-gradient-to-br from-gray-300/20 to-gray-400/20 rounded-xl border border-gray-300/40">
                 <div className="text-5xl mb-3">🥈</div>
                 <div className="text-2xl font-bold text-gray-200 mb-2" style={{ fontFamily: 'Cinzel, serif' }}>Second Place</div>
-                <div className="text-xl text-purple-200" style={{ fontFamily: 'Crimson Text, serif' }}>Rs.2000</div>
+                <div className="text-xl text-purple-200" style={{ fontFamily: 'Crimson Text, serif' }}>Rs.1000 + 3 Wet'nJoy Tickets</div>
               </div>
               <div className="text-center p-6 bg-gradient-to-br from-orange-600/20 to-amber-700/20 rounded-xl border border-orange-400/40">
                 <div className="text-5xl mb-3">🥉</div>
                 <div className="text-2xl font-bold text-orange-200 mb-2" style={{ fontFamily: 'Cinzel, serif' }}>Third Place</div>
-                <div className="text-xl text-purple-200" style={{ fontFamily: 'Crimson Text, serif' }}>Rs.1000</div>
+                <div className="text-xl text-purple-200" style={{ fontFamily: 'Crimson Text, serif' }}>3 Wet'nJoy Tickets</div>
               </div>
             </div>
           </div>
