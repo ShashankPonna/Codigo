@@ -348,7 +348,7 @@ export default function App() {
           <div className="absolute inset-0 bg-background/60"></div>
         </div>
 
-        <div className="max-w-7xl mx-auto text-center relative z-10 animate-fadeIn pt-32">
+        <div className="max-w-7xl mx-auto text-center relative z-10 animate-fadeIn pt-16">
           <h2 className="text-7xl md:text-9xl font-bold mb-8 text-primary leading-tight animate-float" style={{ fontFamily: 'Harry P, serif' }}>
             CODIGO 4.0
           </h2>
