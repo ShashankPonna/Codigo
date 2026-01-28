@@ -6,6 +6,7 @@ import CCLogo from "./images/cclogo.png";
 import BgImg from "./images/bg.png";
 import blindCodingImg from "./images/round003.png";
 import qrCodeImg from "./images/qr.jpeg";
+import WetnJoy from "./images/WetnJoy.jpeg";
 import bgMusic from "./music/bg_music.mpeg";
 import { supabase } from '@/utils/supabaseClient';
 import { toast, Toaster } from 'sonner';
@@ -347,7 +348,7 @@ export default function App() {
           <div className="absolute inset-0 bg-background/60"></div>
         </div>
 
-        <div className="max-w-7xl mx-auto text-center relative z-10 animate-fadeIn">
+        <div className="max-w-7xl mx-auto text-center relative z-10 animate-fadeIn pt-32">
           <h2 className="text-7xl md:text-9xl font-bold mb-8 text-primary leading-tight animate-float" style={{ fontFamily: 'Harry P, serif' }}>
             CODIGO 4.0
           </h2>
@@ -386,11 +387,21 @@ export default function App() {
               📜 View Rulebook
             </a>
           </div>
+
+          {/* WetnJoy Image */}
+          <div className="mt-6 flex flex-col items-center gap-2">
+            <span className="text-muted-foreground text-sm uppercase tracking-widest font-light" style={{ fontFamily: 'Cinzel, serif' }}>Platinum Sponsor</span>
+            <img
+              src={WetnJoy}
+              alt="WetnJoy Water Park"
+              className="h-20 w-40 object-cover rounded-xl shadow-[0_0_15px_rgba(255,255,255,0.1)] hover:shadow-[0_0_25px_rgba(255,255,255,0.2)] hover:scale-105 transition-all duration-300 border border-white/10"
+            />
+          </div>
         </div>
-      </header>
+      </header >
 
       {/* Rounds Preview Section */}
-      <section id="rounds" className="py-20 px-4 sm:px-6 lg:px-8 relative">
+      < section id="rounds" className="py-20 px-4 sm:px-6 lg:px-8 relative" >
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h3 className="text-4xl md:text-5xl font-bold mb-4 text-primary" style={{ fontFamily: 'Cinzel, serif' }}>
@@ -1000,6 +1011,10 @@ export default function App() {
               {isSubmitting ? 'Submitting...' : '⚡ Submit Registration Spell ⚡'}
             </button>
           </form>
+
+          <p className="text-center text-muted-foreground mt-6 text-sm" style={{ fontFamily: 'Crimson Text, serif' }}>
+            Students with Coding Club Membership should contact Atharva Vaidya - 7218520120
+          </p>
         </div>
       </section >
 
