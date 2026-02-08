@@ -362,22 +362,16 @@ export default function App() {
           </p>
 
           <div className="flex flex-col items-center gap-6 animate-bounceOnce">
-            <a
-              href="#register"
-              className="group relative px-12 py-5 bg-primary text-primary-foreground rounded-xl font-bold text-xl transition-all duration-300 hover:bg-primary/90 transform hover:scale-110"
+            <button
+              disabled
+              className="group relative px-12 py-5 bg-muted text-muted-foreground rounded-xl font-bold text-xl cursor-not-allowed opacity-70"
               style={{
                 fontFamily: 'Cinzel, serif',
-                boxShadow: '0 0 20px rgba(212, 175, 55, 0.5), 0 0 40px rgba(212, 175, 55, 0.3)'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.boxShadow = '0 0 30px rgba(212, 175, 55, 0.8), 0 0 60px rgba(212, 175, 55, 0.5), 0 0 80px rgba(212, 175, 55, 0.3)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.boxShadow = '0 0 20px rgba(212, 175, 55, 0.5), 0 0 40px rgba(212, 175, 55, 0.3)';
+                boxShadow: 'none'
               }}
             >
-              ⚡ Register Now ⚡
-            </a>
+              Registration Closed
+            </button>
 
             <a
               href="https://drive.google.com/file/d/1upJ4EwhMqJQ9ORmsiK2DNEEbrvYQwlpF/view?usp=drivesdk"
@@ -1003,12 +997,12 @@ export default function App() {
             </div>
 
             <button
-              type="submit"
-              className="w-full px-8 py-4 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-all transform hover:scale-105 shadow-lg shadow-primary/50 font-bold text-lg"
+              type="button"
+              className="w-full px-8 py-4 bg-muted text-muted-foreground rounded-lg font-bold text-lg cursor-not-allowed opacity-70"
               style={{ fontFamily: 'Cinzel, serif' }}
-              disabled={isSubmitting}
+              disabled={true}
             >
-              {isSubmitting ? 'Submitting...' : '⚡ Submit Registration Spell ⚡'}
+              Registration Closed
             </button>
           </form>
 
